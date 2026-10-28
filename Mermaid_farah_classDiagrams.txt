@@ -1,0 +1,141 @@
+classDiagram
+    class Agent {
+        <<interface>>
+        +getId() int
+        +getName() String
+        +getLocation() Location
+        +moveTo(Location destination) boolean
+        +isAvailable() boolean
+        +assignToMission() void
+        +release() void
+        +canPerform(Mission mission) boolean
+        +canRespondTo(Emergency emergency) boolean
+        +tick() void
+    }
+
+    class Location {
+        <<interface>>
+        +getLocationName() String
+    }
+
+    class Validator {
+        +validateText(String text) boolean
+        +validateNumber(int num) boolean
+    }
+
+    class CrewMember {
+        <<abstract>>
+        -int id
+        -String name
+        -int health
+        -int fatigue
+        -boolean busy
+        +isUsable() boolean
+        +isAvailable() boolean
+        +rest() void
+        +tick() void
+    }
+
+    class Scientist {
+        +canPerform(Mission mission) boolean
+    }
+
+    class Engineer {
+        +canPerform(Mission mission) boolean
+        +canRespondTo(Emergency emergency) boolean
+    }
+
+    class MedicalOfficer {
+        +canPerform(Mission mission) boolean
+        +canRespondTo(Emergency emergency) boolean
+    }
+
+    class Robot {
+        <<abstract>>
+        -int id
+        -String name
+        -int battery
+        -String status
+        -boolean busy
+        +isUsable() boolean
+        +isAvailable() boolean
+        +consumeBattery(int n) boolean
+        +recharge() void
+        +setStatus(String newStatus) void
+        +tick() void
+    }
+
+    class ExplorationRover {
+        -int cargoCount
+        +carry(Equipment equipment) boolean
+        +hasEquipment(String equipmentName) boolean
+        +canPerform(Mission mission) boolean
+    }
+
+    class RepairRobot {
+        +canPerform(Mission mission) boolean
+        +canRespondTo(Emergency emergency) boolean
+    }
+
+    class Drone {
+        +canPerform(Mission mission) boolean
+        +isControllable(Environment env) boolean
+    }
+
+    class Environment {
+        -String condition
+        +setCondition(String condition) boolean
+        +allowsSurfaceOperations() boolean
+        +allowsCommunication() boolean
+    }
+
+    class Simulation {
+        -int currentTime
+        +advanceTime(int n) void
+    }
+
+    class Colony {
+        +tick() void
+    }
+
+    class Mission {
+        <<abstract>>
+        +requires(String capability) boolean
+    }
+
+    class Emergency {
+        <<abstract>>
+        +getType() String
+    }
+
+    class Equipment {
+        +getName() String
+        +isUsable() boolean
+    }
+
+    Agent <|.. CrewMember
+    Agent <|.. Robot
+
+    CrewMember <|-- Scientist
+    CrewMember <|-- Engineer
+    CrewMember <|-- MedicalOfficer
+
+    Robot <|-- ExplorationRover
+    Robot <|-- RepairRobot
+    Robot <|-- Drone
+
+    CrewMember --> Location : located at
+    Robot --> Location : located at
+
+    ExplorationRover o-- Equipment : cargo
+
+    Simulation *-- Colony
+    Simulation *-- Environment
+    Colony --> Environment
+    Colony o-- Agent
+
+    Agent ..> Mission
+    Agent ..> Emergency
+    Drone ..> Environment
+    CrewMember ..> Validator
+    Robot ..> Validator
