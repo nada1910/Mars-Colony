@@ -46,7 +46,7 @@ public class LifeSupportSystem {
         return true;
     }
 
-    public boolean increaseConsumptionRate(double rate) {
+    public boolean increaseConsumptionRate(int rate) {
         if (rate > 0) {
             this.consumptionRate += rate;
             System.out.println("Consumption Rate Increased Sucessfuly ");

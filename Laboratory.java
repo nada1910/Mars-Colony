@@ -13,7 +13,7 @@ public class Laboratory extends Facility {
         super(id, name, FacilityType.LABORATORY, capacity, status);
     }
 
-    public boolean SetFire() {
+    public boolean setFire() {
         if (getOperationalStatus() == OperationalStatus.DESTROYED || onFire) {
             System.out.println("Already On Fire");
             return false;

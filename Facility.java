@@ -11,7 +11,7 @@ public abstract class Facility implements Location {
     private final int capacity;
     private final FacilityType type;
     private final List<Equipment> equipments = new ArrayList<>();
-    private ArrayList<Resources> resources;
+    private ArrayList<Resources> resources= new ArrayList<>();;
     private List<Agent> occupants = new ArrayList<>();
     private OperationalStatus operationalStatus;
 

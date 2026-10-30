@@ -40,12 +40,7 @@ public class Habitat extends Facility {
            consumeResource(ResourcesType.OXYGEN, amount);
         System.out.println("Oxygen Reduced Successfully");
         return true;}}
-    public void oxygenLeak(){
-        reduceOxygen(30);
-        System.out.println("Oxygen Reduced by 30 Due to A Leak");
-        leaking=true;
-        
-    }
+  
     public boolean isLeaking() {
         return leaking;
     }

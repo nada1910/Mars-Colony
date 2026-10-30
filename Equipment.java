@@ -53,8 +53,10 @@ public class Equipment {
     public boolean isDamaged() {
         if(damaged){
             System.out.println("Equipment Is Damaged ");
+        }else{
+            System.out.println("Equipment Not Damaged");
         }
-        System.out.println("Equipment Not Damaged");
+        
         return damaged;
     }
 
