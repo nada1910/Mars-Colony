@@ -122,11 +122,19 @@ public abstract class Mission {
         return java.util.Collections.unmodifiableList(targetFacilities);
     }
 
+<<<<<<< HEAD
+=======
+    
+>>>>>>> f45e90ec535d01d415f6a975c58bd467618c3f74
     public abstract boolean isAllowedIn(Environment e);
 
     public void assign(Agent a){
         if(a == null || !ASSIGNED.equals(state) || !a.canPerform(this) || assignedAgents.contains(a)){
             throw new IllegalArgumentException("Invalid failure reason");
+<<<<<<< HEAD
+=======
+            return;
+>>>>>>> f45e90ec535d01d415f6a975c58bd467618c3f74
         }
         assignedAgents.add(a);
         a.assignToMission();
