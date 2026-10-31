@@ -9,7 +9,7 @@ public class RoverBreakdown extends Emergency {
     private ExplorationRover explorationRover;//damaged rover
     private int requiredRepairParts;
     private Facility breakdownLocation;
-    private boolean repairStatus;//true for repaired flase for not repaired
+    private boolean repairStatus=true;//true for repaired flase for not repaired
     private int requiredNumberOfResponder;
     private int availableSpareParts;
 
@@ -35,6 +35,8 @@ public class RoverBreakdown extends Emergency {
         this.requiredRepairParts = requiredRepairParts;
         this.breakdownLocation = breakdownLocation;
         this.requiredNumberOfResponder=requiredNumberOfResponder;
+        this.availableSpareParts=availableSpareParts;
+        
     }
     public boolean breakdown(){
         if(this.repairStatus==false){

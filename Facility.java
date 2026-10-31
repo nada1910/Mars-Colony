@@ -174,15 +174,17 @@ public abstract class Facility implements Location {
         }
     }
 
-    public boolean addOccupants(Agent o) {
+     public boolean addOccupants(Agent o) {
         if (o == null) {
             System.out.println("Invalid Occupants");
             return false;
-        } else {
+        } else if(!this.isFull()) {
             System.out.println("Occupants Added Successfuly");
             occupants.add(o);
             return true;
         }
+        System.out.println("Facility Is Full");
+        return false;
     }
 
     public boolean removeOccupant(Agent agent) {

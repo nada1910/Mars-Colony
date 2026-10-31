@@ -8,9 +8,9 @@ public class OxygenLeak extends Emergency {
 
     private boolean leak;//true for leak and false after being repaired
     private final Habitat affectedHabitat;
-    private final int oxygenLoss;
+    private final double oxygenLoss;
 
-    public OxygenLeak(boolean leak, Habitat affectedHabitat, int oxygenLoss, int id, EmergencyType type, FacilityType location, String description) {
+    public OxygenLeak(boolean leak, Habitat affectedHabitat, double oxygenLoss, int id, EmergencyType type, FacilityType location, String description) {
         super(id, type, location, description);
         if (affectedHabitat == null) {
             throw new IllegalArgumentException("Invalid Habitat");
@@ -25,27 +25,39 @@ public class OxygenLeak extends Emergency {
     }
 
     public boolean isLeak() {
+        
         return leak;
     }
+     public void detect() {
+        affectedHabitat.setLeaking(true);
+        deduceOxygen(oxygenLoss);
+        setStatus(EmergencyStatus.RESPONDING);
+    }
 
-    public boolean deduceOxygen(int oxygenLoss) {
+    public boolean deduceOxygen(double oxygenLoss) {
         if (oxygenLoss <= 0) {
             return false;
         }
 
-        affectedHabitat.reduceOxygen(oxygenLoss);
+        affectedHabitat.reduceOxygen((int)oxygenLoss);
         return true;
     }
 
     public boolean repairLeak() {
-        if (!leak || !hasRequiredResponders()) {
-            deduceOxygen(10);
-           this.setStatus(EmergencyStatus.UNRESOLVED);
-           System.out.println("Oxygen leak Not repaired ");
+        if (!leak) {
+            System.out.println("Oxygen leak already repaired");
+            return false;
+        }
+        if (!hasRequiredResponders()) {
+            //second deduction
+            deduceOxygen(oxygenLoss);
+            this.setStatus(EmergencyStatus.UNRESOLVED);
+            System.out.println("Oxygen leak Not repaired ");
             return false;
         }
 
         leak = false;
+        affectedHabitat.stopLeak();
         resolveEmergency();
         System.out.println("Oxygen leak repaired successfully");
         return true;
@@ -60,6 +72,7 @@ public class OxygenLeak extends Emergency {
         System.out.println("Affected Habitat: " + this.affectedHabitat);
         return affectedHabitat;
     }
+   
 
    
 

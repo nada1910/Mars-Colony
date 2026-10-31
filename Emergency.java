@@ -12,7 +12,7 @@ abstract class Emergency {
     private final EmergencyType type;
     private final FacilityType location;
     private final String description;
-    private EmergencyStatus status = EmergencyStatus.DETECTED;
+    private EmergencyStatus status=EmergencyStatus.DETECTED;
     private final List<Agent> responders = new ArrayList<>();
     protected List<Agent> allAgents = new ArrayList<>(); 
 

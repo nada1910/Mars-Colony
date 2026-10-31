@@ -6,6 +6,7 @@ package com.mycompany.nada;
 public enum EmergencyStatus {
     RESOLVED,
     UNRESOLVED,
-    RESPONDING
+    RESPONDING,
+    DETECTED
     
 }

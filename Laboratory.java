@@ -68,11 +68,7 @@ public class Laboratory extends Facility {
     }
     @Override
     public void advanceTime(){
-        if(onFire){
-            consumeResource(ResourcesType.OXYGEN,3);//use when fire
-        }
-        else consumeResource(ResourcesType.OXYGEN,1);//normal use
-        
+       
+   
     }
-
 }

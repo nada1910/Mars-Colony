@@ -68,6 +68,7 @@ public class Fire extends Emergency {
     public boolean extinguishFire(){
         if(hasRequiredResponders()){
            fireActive=false;
+           affectedLab.extinguish();
            System.out.println("Fire Extinguished");
            resolveEmergency();
            return true;
@@ -94,7 +95,8 @@ public class Fire extends Emergency {
     public void setFire(){
         fireActive=true;
         affectedLab.setOperationalStatus(OperationalStatus.DAMAGED);
-       affectedLab.damageAllEquipment();
+        affectedLab.setFire();
+   
     }
     
         public void tick() {

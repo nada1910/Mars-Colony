@@ -45,6 +45,10 @@ public class Habitat extends Facility {
         return leaking;
     }
 
+    public void setLeaking(boolean leaking) {
+        this.leaking = leaking;
+    }
+
     
     public void stopLeak() {
         leaking = false;
