@@ -1,0 +1,436 @@
+@startuml
+title MARS-OPS - Class Diagram
+skinparam classAttributeIconSize 0
+skinparam shadowing false
+skinparam linetype ortho
+hide empty members
+
+interface Agent {
+  {static} + EXPLORE, RESEARCH, REPAIR, MEDICAL : String
+  {static} + FIRE_RESPONSE, AERIAL_RECON, RESCUE, COMMUNICATION : String
+  {abstract} + getId() : int
+  {abstract} + getName() : String
+  {abstract} + getLocation() : Location
+  {abstract} + moveTo(destination : Location) : boolean
+  {abstract} + isAvailable() : boolean
+  {abstract} + isUsable() : boolean
+  {abstract} + assignToMission() : void
+  {abstract} + release() : void
+  {abstract} + canPerform(mission : Mission) : boolean
+  {abstract} + canRespondTo(emergency : Emergency) : boolean
+  {abstract} + tick() : void
+  + isHuman() : boolean
+  + canOperateIn(env : Environment) : boolean
+}
+interface Location {
+  {abstract} + getLocationName() : String
+}
+class MarsSurface {
+  - name : String
+  + getLocationName() : String
+}
+abstract class CrewMember {
+  - id : int
+  - name : String
+  - health : int
+  - fatigue : int
+  - busy : boolean
+  - location : Location
+  - skills : List<String>
+  + heal(amount : int) : void
+  + injure(amount : int) : void
+  + rest() : void
+  + addSkill(skill : String) : boolean
+  + hasSkill(skill : String) : boolean
+  + moveTo(destination : Location) : boolean
+  + isUsable() : boolean
+  + isAvailable() : boolean
+  + assignToMission() : void
+  + release() : void
+  + canPerform(mission : Mission) : boolean
+  + canRespondTo(emergency : Emergency) : boolean
+  + tick() : void
+  + isHuman() : boolean
+}
+class Scientist {
+  + canPerform(mission : Mission) : boolean
+}
+class Engineer {
+  + canPerform(mission : Mission) : boolean
+  + canRespondTo(emergency : Emergency) : boolean
+}
+class MedicalOfficer {
+  + canPerform(mission : Mission) : boolean
+  + canRespondTo(emergency : Emergency) : boolean
+}
+abstract class Robot {
+  {static} + OPERATIONAL, DAMAGED, DESTROYED : String
+  {static} + MIN_BATTERY : int = 50
+  - id : int
+  - name : String
+  - battery : int
+  - status : String
+  - location : Location
+  - busy : boolean
+  + setStatus(newStatus : String) : void
+  + moveTo(destination : Location) : boolean
+  + isUsable() : boolean
+  + isAvailable() : boolean
+  + assignToMission() : void
+  + release() : void
+  + consumeBattery(n : int) : boolean
+  + recharge(amount : int) : boolean
+  + canPerform(mission : Mission) : boolean
+  + canRespondTo(emergency : Emergency) : boolean
+  + tick() : void
+  + isHuman() : boolean
+}
+class ExplorationRover {
+  - CAPACITY : int = 5
+  - cargo : Equipment[]
+  - cargoCount : int
+  + carry(equipment : Equipment) : boolean
+  + hasEquipment(equipmentName : String) : boolean
+  + getCargoCount() : int
+  + canPerform(mission : Mission) : boolean
+}
+class RepairRobot {
+  + canPerform(mission : Mission) : boolean
+  + canRespondTo(emergency : Emergency) : boolean
+}
+class Drone {
+  + isControllable(env : Environment) : boolean
+  + canPerform(mission : Mission) : boolean
+  + canOperateIn(env : Environment) : boolean
+}
+class Validator {
+  {static} + validateText(text : String) : boolean
+  {static} + validateNumber(num : int) : boolean
+}
+class Simulation {
+  - currentTime : int
+  - env : Environment
+  - colony : Colony
+  + advanceTime(n : int) : void
+  + getCurrentTime() : int
+  + getEnvironment() : Environment
+  + getColony() : Colony
+}
+class Environment {
+  {static} + NORMAL, DUST_STORM, COMM_DISRUPTION : String
+  - condition : String
+  + getCondition() : String
+  + setCondition(condition : String) : boolean
+  + allowsSurfaceOperations() : boolean
+  + allowsCommunication() : boolean
+}
+class Colony {
+  - activeMission : Mission
+  - e : Environment
+  - facilities : List<Facility>
+  - crew : List<CrewMember>
+  - robots : List<Robot>
+  - missionHistory : List<Mission>
+  - emergencyLog : List<Emergency>
+  + submitMission(m : Mission, agents : List<Agent>) : void
+  - checkActiveMission() : void
+  + tick() : void
+  + getTotal(type : ResourcesType) : int
+  + consumeResources(resources : Map<ResourcesType,Integer>) : boolean
+  + handleEmergency(e : Emergency) : void
+  + statusReport() : void
+}
+abstract class Mission {
+  {static} + ASSIGNED, IN_PROGRESS, COMPLETED, FAILED : String
+  - id : int
+  - duration : int
+  - elapsed : int
+  - state : String
+  - failureReason : String
+  - assignedAgents : List<Agent>
+  - requiredCapabilities : List<String>
+  - requiredResources : Map<ResourcesType,Integer>
+  - targetFacilities : List<Facility>
+  {abstract} + isAllowedIn(e : Environment) : boolean
+  + assign(a : Agent) : void
+  + start() : void
+  + tick() : void
+  + complete() : void
+  + fail(reason : String) : void
+  + requires(capability : String) : boolean
+  - releaseAgents() : void
+  + getState() : String
+  + getFailureReason() : String
+}
+class ExplorationMission {
+  - region : String
+  - requiredEquipment : List<Equipment>
+  + isAllowedIn(e : Environment) : boolean
+  + getRegion() : String
+  + setRegion(newRegion : String) : void
+}
+class RepairMission {
+  - targetFacility : Facility
+  - targetEquipment : Equipment
+  + isAllowedIn(e : Environment) : boolean
+  + getTargetFacility() : Facility
+  + getTargetEquipment() : Equipment
+}
+class ResearchMission {
+  - lab : Laboratory
+  - requiredSkill : String
+  + isAllowedIn(e : Environment) : boolean
+  + getLab() : Laboratory
+  + getRequiredSkill() : String
+}
+class RescueMission {
+  + isAllowedIn(e : Environment) : boolean
+}
+abstract class Facility {
+  - id : int
+  - name : String
+  - capacity : int
+  - type : FacilityType
+  - operationalStatus : OperationalStatus
+  - equipments : List<Equipment>
+  - resources : List<Resources>
+  - occupants : List<Agent>
+  + getQuantity(type : ResourcesType) : int
+  + addResource(type : ResourcesType, amount : int) : boolean
+  + consumeResource(type : ResourcesType, amount : int) : boolean
+  + addEquipment(e : Equipment) : boolean
+  + removeEquipment(e : Equipment) : boolean
+  + damageAllEquipment() : int
+  + addOccupants(o : Agent) : boolean
+  + removeOccupant(a : Agent) : boolean
+  + isFull() : boolean
+  + setOperationalStatus(s : OperationalStatus) : boolean
+  + isOperational() : boolean
+  + advanceTime() : void
+  + getLocationName() : String
+}
+class Habitat {
+  - lifeSupport : LifeSupportSystem
+  - leaking : boolean
+  + getOxygen() : int
+  + reduceOxygen(amount : int) : boolean
+  + setLeaking(leaking : boolean) : void
+  + stopLeak() : void
+  + advanceTime() : void
+}
+class Laboratory {
+  - onFire : boolean
+  + setFire() : boolean
+  + extinguish() : boolean
+  + availability() : boolean
+  + hasUsableEquipment(name : String) : boolean
+}
+class StorageFacility {
+  - storageCapacity : int
+  + getFreeStorage() : int
+  + getUsedStorage() : int
+  + addResource(r : ResourcesType, amount : int) : boolean
+}
+class PowerStation {
+  - powerOutput : int
+  + supplyPower(target : Facility, amount : int) : boolean
+  + generate() : boolean
+  + advanceTime() : void
+}
+class CommunicationStation {
+  - signalDisturbed : boolean
+  + disturbSignal() : void
+  + restoreSignal() : void
+  + isLinkActive() : boolean
+}
+class Resources {
+  - resource : ResourcesType
+  - quantity : int
+  + add(amount : int) : boolean
+  + consume(amount : int) : boolean
+  + setQuantity(quantity : int) : boolean
+  {static} + getColonyTotal(facilities : List<Facility>, r : ResourcesType) : int
+  {static} + getColonyTotals(facilities : List<Facility>) : Map<ResourcesType,Integer>
+  {static} + canSupply(facilities : List<Facility>, request : Map<ResourcesType,Integer>) : boolean
+  {static} + consume(facilities : List<Facility>, request : Map<ResourcesType,Integer>) : boolean
+}
+class Equipment {
+  - name : String
+  - quantity : int
+  - damaged : boolean
+  + isUsable() : boolean
+  + damage() : void
+  + repair() : void
+}
+class LifeSupportSystem {
+  - status : boolean
+  - consumptionRate : int
+  - airQuality : int
+  + filterAir() : boolean
+  + restore() : void
+  + tick() : void
+  + increaseConsumptionRate(rate : int) : boolean
+}
+abstract class Emergency {
+  - id : int
+  - type : EmergencyType
+  - location : FacilityType
+  - description : String
+  - status : EmergencyStatus
+  - responders : List<Agent>
+  # allAgents : List<Agent>
+  - unresolvedReason : String
+  {abstract} + hasRequiredResponders() : boolean
+  + applyInitialEffect() : void
+  + applyUnresolvedPenalty() : void
+  + checkPreconditions() : String
+  + getAffectedFacility() : Facility
+  + getRequiredResources() : Map<ResourcesType,Integer>
+  + getResponders(allAgents : List<Agent>) : List<Agent>
+  + addResponder(a : Agent) : void
+  + resolve() : void
+  + resolveEmergency() : boolean
+  + markUnresolved(reason : String) : void
+  + getUnresolvedReason() : String
+}
+class OxygenLeak {
+  - leak : boolean
+  - affectedHabitat : Habitat
+  - oxygenLoss : double
+  + detect() : void
+  + deduceOxygen(loss : double) : boolean
+  + repairLeak() : boolean
+  + applyInitialEffect() : void
+  + applyUnresolvedPenalty() : void
+  + resolve() : void
+}
+class Fire {
+  - fireActive : boolean
+  - severity : int
+  - oxygenConsumption : int
+  - affectedLab : Laboratory
+  + setFire() : void
+  + extinguishFire() : boolean
+  + consumeOxygen() : void
+  + tick() : void
+  + applyInitialEffect() : void
+  + resolve() : void
+}
+class RoverBreakdown {
+  - explorationRover : ExplorationRover
+  - breakdownLocation : Facility
+  - requiredRepairParts : int
+  - availableSpareParts : int
+  - requiredNumberOfResponder : int
+  - repairStatus : boolean
+  + breakdown() : boolean
+  + repairRover() : boolean
+  + checkRepairParts() : boolean
+  + applyInitialEffect() : void
+  + resolve() : void
+}
+class MedicalEmergency {
+  - patient : CrewMember
+  - affectedFacility : Facility
+  - requiredNumberOfResponder : int
+  - medicalSuppliesRequired : int
+  - healthRecovery : int
+  - treatmentSuccessful : boolean
+  + checkMedicalSupplies() : boolean
+  + treatPatient() : boolean
+  + checkPreconditions() : String
+  + applyUnresolvedPenalty() : void
+  + resolve() : void
+}
+enum ResourcesType {
+  OXYGEN
+  WATER
+  FOOD
+  FUEL
+  BATTERY_POWER
+  MEDICAL_SUPPLIES
+  SPARE_PARTS
+}
+enum EmergencyType {
+  OXYGEN_LEAK
+  FIRE
+  ROVER_BREAKDOWN
+  MEDICAL_EMERGENCY
+}
+enum EmergencyStatus {
+  DETECTED
+  RESPONDING
+  RESOLVED
+  UNRESOLVED
+}
+enum FacilityType {
+  HABITAT
+  LABORATORY
+  STORAGE
+  POWER_STATION
+  COMMUNICATION
+}
+enum OperationalStatus {
+  OPERATIONAL
+  UNDER_MAINTENANCE
+  DAMAGED
+  DESTROYED
+}
+
+CrewMember <|-- Scientist
+CrewMember <|-- Engineer
+CrewMember <|-- MedicalOfficer
+Robot <|-- ExplorationRover
+Robot <|-- RepairRobot
+Robot <|-- Drone
+Facility <|-- Habitat
+Facility <|-- Laboratory
+Facility <|-- StorageFacility
+Facility <|-- PowerStation
+Facility <|-- CommunicationStation
+Mission <|-- ExplorationMission
+Mission <|-- RepairMission
+Mission <|-- ResearchMission
+Mission <|-- RescueMission
+Emergency <|-- OxygenLeak
+Emergency <|-- Fire
+Emergency <|-- RoverBreakdown
+Emergency <|-- MedicalEmergency
+Agent <|.. CrewMember
+Agent <|.. Robot
+Location <|.. Facility
+Location <|.. MarsSurface
+Habitat "1" *-- "1" LifeSupportSystem : lifeSupport
+Facility "1" *-- "0..*" Resources : resources
+Colony "1" o-- "0..*" CrewMember : crew
+Colony "1" o-- "0..*" Robot : robots
+Colony "1" o-- "0..*" Facility : facilities
+Facility "1" o-- "0..*" Equipment : equipments
+ExplorationRover "1" o-- "0..5" Equipment : cargo
+Simulation "1" --> "1" Colony : colony
+Simulation "1" --> "1" Environment : env
+Colony "*" --> "1" Environment : e
+Colony "1" --> "0..1" Mission : activeMission / missionHistory 0..*
+Colony "1" --> "0..*" Emergency : emergencyLog
+Mission "*" --> "0..*" Agent : assignedAgents
+Mission "*" --> "0..*" Facility : targetFacilities
+ExplorationMission "*" --> "0..*" Equipment : requiredEquipment
+ResearchMission "*" --> "1" Laboratory : lab
+RepairMission "*" --> "1" Facility : targetFacility
+RepairMission "*" --> "1" Equipment : targetEquipment
+Emergency "*" --> "0..*" Agent : responders
+OxygenLeak "*" --> "1" Habitat : affectedHabitat
+Fire "*" --> "1" Laboratory : affectedLab
+RoverBreakdown "*" --> "1" ExplorationRover : explorationRover
+RoverBreakdown "*" --> "1" Facility : breakdownLocation
+MedicalEmergency "*" --> "1" CrewMember : patient
+MedicalEmergency "*" --> "1" Facility : affectedFacility
+Facility "1" --> "0..*" Agent : occupants
+CrewMember "*" --> "1" Location : location
+Robot "*" --> "1" Location : location
+Agent ..> Mission : <<use>>
+Agent ..> Emergency : <<use>>
+Mission ..> Environment : <<use>>
+CrewMember ..> Validator
+Robot ..> Validator
+@enduml
