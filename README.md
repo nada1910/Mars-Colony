@@ -54,8 +54,8 @@ When the responders aren't there, the emergency becomes `UNRESOLVED`, nothing is
 ### Oxygen leak
 1. `detect()` marks the habitat as leaking, takes the first oxygen loss (`oxygenLoss`) from that habitat only, and sets the status to `RESPONDING`.
 2. `repairLeak()`:
-   - responders available: the leak is fixed, the habitat stops leaking, status `RESOLVED`. Total cost is **one** `oxygenLoss`.
-   - no responders: the same amount is taken a second time and the status becomes `UNRESOLVED`. Total cost is **two** `oxygenLoss`.
+   - responders available (at least one crew member **and** one robot): the leak is fixed, the habitat stops leaking, status `RESOLVED`. Total cost is **one** `oxygenLoss`.
+   - no responders (or only crew, or only robots): the same amount is taken a second time and the status becomes `UNRESOLVED`. Total cost is **two** `oxygenLoss`.
    - leak already repaired: nothing happens.
 3. It's a one-time loss. There is no oxygen draining on every time step.
 4. Habitat oxygen is clamped at 0.
@@ -64,6 +64,7 @@ When the responders aren't there, the emergency becomes `UNRESOLVED`, nothing is
 - `setFire()` puts the laboratory on fire, sets its status to `DAMAGED` (so it's unavailable and its stock stops counting) and damages all its equipment.
 - Each `tick()` while the fire is active uses oxygen from the lab depending on severity: 5 (low), 10 (moderate) or 15 (high).
 - `extinguishFire()` with responders: the fire stops, the lab goes to `UNDER_MAINTENANCE`, status `RESOLVED`. Without responders the fire keeps burning and the status is `UNRESOLVED`.
+- If the fire isn't put out, someone gets hurt: `extinguishFire()` without responders, and every `tick()` while the fire is active, create one follow-up `MedicalEmergency` for the first crew member found in `allAgents` (needs 1 responder and 3 medical supplies, in the burning lab, id = fire id + 1000). It is only created once and can be read with `getFollowUpMedical()`.
 
 ### Rover breakdown
 - `breakdown()` marks the rover as broken (`repairStatus = false`).
@@ -82,7 +83,7 @@ When the responders aren't there, the emergency becomes `UNRESOLVED`, nothing is
 | Realization | `Facility` implements `Location`. | Anything that can hold an agent can be its location. |
 | Composition | `Habitat` ◆ `LifeSupportSystem`. `Facility` ◆ `Resources`. | The `LifeSupportSystem` is created in the `Habitat` constructor and is `final`, so it disappears with the habitat. The `Resources` entries are created inside the facility when stock is added and are never passed in from outside. |
 | Aggregation | `Facility` ◇ `Equipment`. `Facility` ◇ `Agent` (occupants). | Equipment and people are created elsewhere and passed in. They still exist if the facility is destroyed and can be moved. |
-| Association | An `Emergency` uses a `Habitat`, `Laboratory`, `Facility`, `ExplorationRover` or `CrewMember`. `PowerStation` uses a target `Facility`. | The objects work together, but neither one owns the other. |
+| Association | An `Emergency` uses a `Habitat`, `Laboratory`, `Facility`, `ExplorationRover` or `CrewMember`. `Fire` keeps the `MedicalEmergency` it creates. `PowerStation` uses a target `Facility`. | The objects work together, but neither one owns the other. |
 
 ## Design decisions
 
@@ -93,8 +94,9 @@ When the responders aren't there, the emergency becomes `UNRESOLVED`, nothing is
 
 ## Known limitations
 
-- You have to call `getResponders(allAgents)` before `repairLeak()` or `extinguishFire()`, because those use the list built by that call. `RoverBreakdown` and `MedicalEmergency` do it by themselves.
-- A fire doesn't automatically create a medical emergency for the people inside the lab.
+- You have to call `getResponders(allAgents)` before `extinguishFire()`, because it uses the list built by that call. `OxygenLeak` does it by itself when the list is empty, and `RoverBreakdown` and `MedicalEmergency` do it by themselves. When the emergency goes through `Colony.handleEmergency`, the colony fills `allAgents` and the responders for you.
+- The medical emergency that a fire creates is not handled automatically. It has to be passed to `Colony.handleEmergency` by whoever called `getFollowUpMedical()`.
+- `Fire.tick()` is not called by `Colony.tick()`, so a fire only burns oxygen over time if the simulation calls it.
 
 
 
@@ -103,4 +105,4 @@ When the responders aren't there, the emergency becomes `UNRESOLVED`, nothing is
 
 **Scenario 3 – Resource shortage.** Put 300 oxygen in a habitat and 200 in a storage facility, then call `Resources.consume(facilities, request)` with 450 (works, storage is emptied first) and then with 600 (rejected, nothing changes).
 
-**Scenario 4 – Emergency handling.** Create a habitat with some oxygen, build an `OxygenLeak` for it, call `setAllAgents(...)` and `getResponders(...)`, then `detect()` and `repairLeak()`. Check the habitat oxygen: 1 × loss if repaired, 2 × loss if there were no responders.
+**Scenario 4 – Emergency handling.** Create a habitat with some oxygen, build an `OxygenLeak` for it, call `setAllAgents(...)` and `getResponders(...)`, then `detect()` and `repairLeak()`. Check the habitat oxygen: 1 × loss if repaired, 2 × loss if there were no responders. Sending the same `OxygenLeak` to `colony.handleEmergency(...)` gives the same result.
