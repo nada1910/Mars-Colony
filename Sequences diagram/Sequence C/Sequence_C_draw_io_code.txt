@@ -1,0 +1,172 @@
+@startuml
+title Sequence C - Environmental Restriction: a dust storm blocks a new ExplorationMission and fails a running one
+skinparam shadowing false
+skinparam backgroundColor #FFFFFF
+skinparam sequenceMessageAlign center
+
+actor "Colony Operator\n(Main)" as OP
+participant "env : Environment" as ENV
+participant "sim : Simulation" as SIM
+participant "colony : Colony" as COL
+participant "m : ExplorationMission" as M
+participant "running : ExplorationMission" as M2
+participant "agent : Agent\n(scientist : Scientist,\nrover : ExplorationRover)" as AG
+
+== 1. The environment changes ==
+OP -> ENV : setCondition("DUST_STORM")
+activate ENV
+ENV --> OP : true
+deactivate ENV
+note right of ENV : condition = DUST_STORM
+
+== 2. A new exploration mission is submitted ==
+OP -> COL : submitMission(m, [scientist, rover])
+activate COL
+COL -> COL : agents not empty, activeMission == null\n(no other mission is active)
+
+loop for each agent in agents
+    COL -> AG : isAvailable()
+    AG --> COL : true
+    COL -> AG : canPerform(m)
+    AG --> COL : true
+    COL -> AG : canOperateIn(env)
+    AG --> COL : true
+    COL -> COL : no duplicate agent:\nindexOf(a) == lastIndexOf(a)
+end
+
+== 3. Environmental check ==
+COL -> M : isAllowedIn(env)
+activate M
+M -> ENV : allowsSurfaceOperations()
+activate ENV
+ENV --> M : false
+deactivate ENV
+M --> COL : false
+deactivate M
+
+alt !m.isAllowedIn(env) - DUST_STORM: surface operations not allowed
+    COL -> M : fail("Environment is not suitable")
+    activate M
+    M -> M : state = FAILED\nfailureReason = reason
+    M -> M : releaseAgents()\n(assignedAgents is still empty)
+    M --> COL
+    deactivate M
+    COL -> COL : missionHistory.add(m)
+    note right of COL #FFAAAA
+      activeMission stays null:
+      the mission never becomes active.
+      No resources consumed, no agent assigned.
+    end note
+else environment allows surface operations
+    COL -> COL : continue normal flow: check resources,\nconsume, assign agents, m.start() -> IN_PROGRESS\n(see Sequence A)
+end
+
+COL --> OP : (mission is FAILED)
+deactivate COL
+
+== 4. The operator reads the failure reason ==
+OP -> M : getFailureReason()
+activate M
+M --> OP : "Environment is not suitable"
+deactivate M
+note over OP, M #CCFFCC
+  Output: Exploration Mission cannot start.
+  Reason: Environment is not suitable
+end note
+
+== 5. Variant - the storm arrives while another mission is already running ==
+OP -> ENV : setCondition("NORMAL")
+activate ENV
+ENV --> OP : true
+deactivate ENV
+
+OP -> COL : submitMission(running, [scientist, rover])
+activate COL
+COL -> COL : all checks pass -> consumeResources(...)
+COL -> M2 : assign(agent)  for each agent
+activate M2
+M2 -> AG : assignToMission()
+M2 --> COL
+deactivate M2
+COL -> M2 : start()
+activate M2
+M2 -> M2 : state = IN_PROGRESS
+M2 --> COL
+deactivate M2
+COL -> COL : activeMission = running
+COL --> OP : (mission is IN_PROGRESS)
+deactivate COL
+
+OP -> SIM : advanceTime(1)
+activate SIM
+SIM -> SIM : currentTime++
+SIM -> COL : tick()
+activate COL
+COL -> AG : tick()  (crew & robots)
+COL -> COL : checkActiveMission():\nenvironment still suitable
+COL -> M2 : tick()
+activate M2
+M2 -> M2 : elapsed = 1
+M2 --> COL
+deactivate M2
+COL --> SIM
+deactivate COL
+SIM --> OP
+deactivate SIM
+
+OP -> ENV : setCondition("DUST_STORM")
+activate ENV
+ENV --> OP : true
+deactivate ENV
+note right of ENV : condition = DUST_STORM
+
+OP -> SIM : advanceTime(1)
+activate SIM
+SIM -> SIM : currentTime++
+SIM -> COL : tick()
+activate COL
+COL -> AG : tick()  (crew & robots)
+COL -> COL : checkActiveMission()
+COL -> M2 : isAllowedIn(env)
+activate M2
+M2 -> ENV : allowsSurfaceOperations()
+activate ENV
+ENV --> M2 : false
+deactivate ENV
+M2 --> COL : false
+deactivate M2
+COL -> COL : reason = "Environment is not suitable"
+COL -> M2 : fail(reason)
+activate M2
+M2 -> M2 : state = FAILED\nfailureReason = reason
+M2 -> M2 : releaseAgents()
+M2 -> AG : release()  for each assigned agent
+M2 -> M2 : assignedAgents.clear()
+M2 --> COL
+deactivate M2
+COL -> COL : missionHistory.add(running)\nactiveMission = null
+note right of COL #FFAAAA
+  tick() stops here: activeMission == null,
+  so running.tick() is never called.
+  The mission is failed by the environment
+  check and its agents are released.
+end note
+COL --> SIM
+deactivate COL
+SIM --> OP
+deactivate SIM
+
+OP -> M2 : getFailureReason()
+activate M2
+M2 --> OP : "Environment is not suitable"
+deactivate M2
+OP -> AG : isAvailable()  (rover)
+activate AG
+AG --> OP : true
+deactivate AG
+note over OP, M2 #CCFFCC
+  Output: Running mission failed.
+  Reason: Environment is not suitable
+  Rover available again? true
+end note
+@enduml

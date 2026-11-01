@@ -1,0 +1,1047 @@
+<mxfile host="app.diagrams.net" agent="Claude" version="24.7.0">
+  <diagram name="MARS-OPS Class Diagram" id="diagram-marsopsclassdiagram">
+    <mxGraphModel background="#ffffff" dx="1600" dy="900" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="4800" pageHeight="3400" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="bg_white" value="" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=none;locked=1;pointerEvents=0;connectable=0;movable=0;resizable=0;deletable=0;" vertex="1" parent="1">
+          <mxGeometry x="-80" y="-80" width="4785" height="2330" as="geometry" />
+        </mxCell>
+        <mxCell id="c_Agent" value="&amp;lt;&amp;lt;interface&amp;gt;&amp;gt;&lt;br&gt;&lt;b&gt;Agent&lt;/b&gt;" style="swimlane;fontStyle=0;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=40;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=0;marginBottom=0;whiteSpace=wrap;html=1;fontSize=12;fillColor=#ffffff;strokeColor=#6c8ebf;dashed=1;" vertex="1" parent="1">
+          <mxGeometry x="746" y="40" width="400" height="289" as="geometry" />
+        </mxCell>
+        <mxCell id="a_Agent" value="&lt;u&gt;+ EXPLORE, RESEARCH, REPAIR, MEDICAL : String&lt;/u&gt;&lt;br&gt;&lt;u&gt;+ FIRE_RESPONSE, AERIAL_RECON, RESCUE, COMMUNICATION : String&lt;/u&gt;" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=6;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=nowrap;html=1;fontSize=11;" vertex="1" parent="c_Agent">
+          <mxGeometry x="0" y="40" width="400" height="38" as="geometry" />
+        </mxCell>
+        <mxCell id="s_Agent" value="" style="line;strokeWidth=1;fillColor=none;align=left;verticalAlign=middle;spacingTop=-1;spacingLeft=3;spacingRight=3;rotatable=0;labelPosition=right;points=[];portConstraint=eastwest;strokeColor=inherit;" vertex="1" parent="c_Agent">
+          <mxGeometry x="0" y="78" width="400" height="8" as="geometry" />
+        </mxCell>
+        <mxCell id="m_Agent" value="&lt;i&gt;+ getId() : int&lt;/i&gt;&lt;br&gt;&lt;i&gt;+ getName() : String&lt;/i&gt;&lt;br&gt;&lt;i&gt;+ getLocation() : Location&lt;/i&gt;&lt;br&gt;&lt;i&gt;+ moveTo(destination : Location) : boolean&lt;/i&gt;&lt;br&gt;&lt;i&gt;+ isAvailable() : boolean&lt;/i&gt;&lt;br&gt;&lt;i&gt;+ isUsable() : boolean&lt;/i&gt;&lt;br&gt;&lt;i&gt;+ assignToMission() : void&lt;/i&gt;&lt;br&gt;&lt;i&gt;+ release() : void&lt;/i&gt;&lt;br&gt;&lt;i&gt;+ canPerform(mission : Mission) : boolean&lt;/i&gt;&lt;br&gt;&lt;i&gt;+ canRespondTo(emergency : Emergency) : boolean&lt;/i&gt;&lt;br&gt;&lt;i&gt;+ tick() : void&lt;/i&gt;&lt;br&gt;+ isHuman() : boolean  {default}&lt;br&gt;+ canOperateIn(env : Environment) : boolean  {default}" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=6;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=nowrap;html=1;fontSize=11;" vertex="1" parent="c_Agent">
+          <mxGeometry x="0" y="86" width="400" height="203" as="geometry" />
+        </mxCell>
+        <mxCell id="c_Location" value="&amp;lt;&amp;lt;interface&amp;gt;&amp;gt;&lt;br&gt;&lt;b&gt;Location&lt;/b&gt;" style="swimlane;fontStyle=0;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=40;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=0;marginBottom=0;whiteSpace=wrap;html=1;fontSize=12;fillColor=#ffffff;strokeColor=#6c8ebf;dashed=1;" vertex="1" parent="1">
+          <mxGeometry x="3441" y="40" width="190" height="79" as="geometry" />
+        </mxCell>
+        <mxCell id="a_Location" value="" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=6;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=nowrap;html=1;fontSize=11;" vertex="1" parent="c_Location">
+          <mxGeometry x="0" y="40" width="190" height="8" as="geometry" />
+        </mxCell>
+        <mxCell id="s_Location" value="" style="line;strokeWidth=1;fillColor=none;align=left;verticalAlign=middle;spacingTop=-1;spacingLeft=3;spacingRight=3;rotatable=0;labelPosition=right;points=[];portConstraint=eastwest;strokeColor=inherit;" vertex="1" parent="c_Location">
+          <mxGeometry x="0" y="48" width="190" height="8" as="geometry" />
+        </mxCell>
+        <mxCell id="m_Location" value="&lt;i&gt;+ getLocationName() : String&lt;/i&gt;" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=6;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=nowrap;html=1;fontSize=11;" vertex="1" parent="c_Location">
+          <mxGeometry x="0" y="56" width="190" height="23" as="geometry" />
+        </mxCell>
+        <mxCell id="c_MarsSurface" value="&lt;b&gt;MarsSurface&lt;/b&gt;" style="swimlane;fontStyle=0;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=0;marginBottom=0;whiteSpace=wrap;html=1;fontSize=12;fillColor=#ffffff;strokeColor=#6c8ebf;" vertex="1" parent="1">
+          <mxGeometry x="3821" y="40" width="190" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="a_MarsSurface" value="- name : String" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=6;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=nowrap;html=1;fontSize=11;" vertex="1" parent="c_MarsSurface">
+          <mxGeometry x="0" y="26" width="190" height="23" as="geometry" />
+        </mxCell>
+        <mxCell id="s_MarsSurface" value="" style="line;strokeWidth=1;fillColor=none;align=left;verticalAlign=middle;spacingTop=-1;spacingLeft=3;spacingRight=3;rotatable=0;labelPosition=right;points=[];portConstraint=eastwest;strokeColor=inherit;" vertex="1" parent="c_MarsSurface">
+          <mxGeometry x="0" y="49" width="190" height="8" as="geometry" />
+        </mxCell>
+        <mxCell id="m_MarsSurface" value="+ getLocationName() : String" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=6;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=nowrap;html=1;fontSize=11;" vertex="1" parent="c_MarsSurface">
+          <mxGeometry x="0" y="57" width="190" height="23" as="geometry" />
+        </mxCell>
+        <mxCell id="c_CrewMember" value="&lt;b&gt;&lt;i&gt;CrewMember&lt;/i&gt;&lt;/b&gt;" style="swimlane;fontStyle=0;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=0;marginBottom=0;whiteSpace=wrap;html=1;fontSize=12;fillColor=#dae8fc;strokeColor=#6c8ebf;" vertex="1" parent="1">
+          <mxGeometry x="351" y="419" width="330" height="365" as="geometry" />
+        </mxCell>
+        <mxCell id="a_CrewMember" value="- id : int&lt;br&gt;- name : String&lt;br&gt;- health : int&lt;br&gt;- fatigue : int&lt;br&gt;- busy : boolean&lt;br&gt;- location : Location&lt;br&gt;- skills : List&amp;lt;String&amp;gt;" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=6;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=nowrap;html=1;fontSize=11;" vertex="1" parent="c_CrewMember">
+          <mxGeometry x="0" y="26" width="330" height="113" as="geometry" />
+        </mxCell>
+        <mxCell id="s_CrewMember" value="" style="line;strokeWidth=1;fillColor=none;align=left;verticalAlign=middle;spacingTop=-1;spacingLeft=3;spacingRight=3;rotatable=0;labelPosition=right;points=[];portConstraint=eastwest;strokeColor=inherit;" vertex="1" parent="c_CrewMember">
+          <mxGeometry x="0" y="139" width="330" height="8" as="geometry" />
+        </mxCell>
+        <mxCell id="m_CrewMember" value="+ heal(amount : int) : void&lt;br&gt;+ injure(amount : int) : void&lt;br&gt;+ rest() : void&lt;br&gt;+ addSkill(skill : String) : boolean&lt;br&gt;+ hasSkill(skill : String) : boolean&lt;br&gt;+ moveTo(destination : Location) : boolean&lt;br&gt;+ isUsable() : boolean  {health&amp;gt;=50, fatigue&amp;lt;=40}&lt;br&gt;+ isAvailable() : boolean  {!busy &amp;amp;&amp;amp; isUsable()}&lt;br&gt;+ assignToMission() : void&lt;br&gt;+ release() : void&lt;br&gt;+ canPerform(mission : Mission) : boolean&lt;br&gt;+ canRespondTo(emergency : Emergency) : boolean&lt;br&gt;+ tick() : void  {fatigue += 5 if busy}&lt;br&gt;+ isHuman() : boolean" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=6;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=nowrap;html=1;fontSize=11;" vertex="1" parent="c_CrewMember">
+          <mxGeometry x="0" y="147" width="330" height="218" as="geometry" />
+        </mxCell>
+        <mxCell id="c_Scientist" value="&lt;b&gt;Scientist&lt;/b&gt;" style="swimlane;fontStyle=0;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=0;marginBottom=0;whiteSpace=wrap;html=1;fontSize=12;fillColor=#dae8fc;strokeColor=#6c8ebf;" vertex="1" parent="1">
+          <mxGeometry x="40" y="874" width="280" height="65" as="geometry" />
+        </mxCell>
+        <mxCell id="a_Scientist" value="" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=6;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=nowrap;html=1;fontSize=11;" vertex="1" parent="c_Scientist">
+          <mxGeometry x="0" y="26" width="280" height="8" as="geometry" />
+        </mxCell>
+        <mxCell id="s_Scientist" value="" style="line;strokeWidth=1;fillColor=none;align=left;verticalAlign=middle;spacingTop=-1;spacingLeft=3;spacingRight=3;rotatable=0;labelPosition=right;points=[];portConstraint=eastwest;strokeColor=inherit;" vertex="1" parent="c_Scientist">
+          <mxGeometry x="0" y="34" width="280" height="8" as="geometry" />
+        </mxCell>
+        <mxCell id="m_Scientist" value="+ canPerform(mission : Mission) : boolean" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=6;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=nowrap;html=1;fontSize=11;" vertex="1" parent="c_Scientist">
+          <mxGeometry x="0" y="42" width="280" height="23" as="geometry" />
+        </mxCell>
+        <mxCell id="c_Engineer" value="&lt;b&gt;Engineer&lt;/b&gt;" style="swimlane;fontStyle=0;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=0;marginBottom=0;whiteSpace=wrap;html=1;fontSize=12;fillColor=#dae8fc;strokeColor=#6c8ebf;" vertex="1" parent="1">
+          <mxGeometry x="346" y="874" width="310" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="a_Engineer" value="" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=6;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=nowrap;html=1;fontSize=11;" vertex="1" parent="c_Engineer">
+          <mxGeometry x="0" y="26" width="310" height="8" as="geometry" />
+        </mxCell>
+        <mxCell id="s_Engineer" value="" style="line;strokeWidth=1;fillColor=none;align=left;verticalAlign=middle;spacingTop=-1;spacingLeft=3;spacingRight=3;rotatable=0;labelPosition=right;points=[];portConstraint=eastwest;strokeColor=inherit;" vertex="1" parent="c_Engineer">
+          <mxGeometry x="0" y="34" width="310" height="8" as="geometry" />
+        </mxCell>
+        <mxCell id="m_Engineer" value="+ canPerform(mission : Mission) : boolean&lt;br&gt;+ canRespondTo(emergency : Emergency) : boolean" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=6;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=nowrap;html=1;fontSize=11;" vertex="1" parent="c_Engineer">
+          <mxGeometry x="0" y="42" width="310" height="38" as="geometry" />
+        </mxCell>
+        <mxCell id="c_MedicalOfficer" value="&lt;b&gt;MedicalOfficer&lt;/b&gt;" style="swimlane;fontStyle=0;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=0;marginBottom=0;whiteSpace=wrap;html=1;fontSize=12;fillColor=#dae8fc;strokeColor=#6c8ebf;" vertex="1" parent="1">
+          <mxGeometry x="682" y="874" width="310" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="a_MedicalOfficer" value="" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=6;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=nowrap;html=1;fontSize=11;" vertex="1" parent="c_MedicalOfficer">
+          <mxGeometry x="0" y="26" width="310" height="8" as="geometry" />
+        </mxCell>
+        <mxCell id="s_MedicalOfficer" value="" style="line;strokeWidth=1;fillColor=none;align=left;verticalAlign=middle;spacingTop=-1;spacingLeft=3;spacingRight=3;rotatable=0;labelPosition=right;points=[];portConstraint=eastwest;strokeColor=inherit;" vertex="1" parent="c_MedicalOfficer">
+          <mxGeometry x="0" y="34" width="310" height="8" as="geometry" />
+        </mxCell>
+        <mxCell id="m_MedicalOfficer" value="+ canPerform(mission : Mission) : boolean&lt;br&gt;+ canRespondTo(emergency : Emergency) : boolean" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=6;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=nowrap;html=1;fontSize=11;" vertex="1" parent="c_MedicalOfficer">
+          <mxGeometry x="0" y="42" width="310" height="38" as="geometry" />
+        </mxCell>
+        <mxCell id="c_Robot" value="&lt;b&gt;&lt;i&gt;Robot&lt;/i&gt;&lt;/b&gt;" style="swimlane;fontStyle=0;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=0;marginBottom=0;whiteSpace=wrap;html=1;fontSize=12;fillColor=#d5e8d4;strokeColor=#82b366;" vertex="1" parent="1">
+          <mxGeometry x="1276" y="419" width="340" height="350" as="geometry" />
+        </mxCell>
+        <mxCell id="a_Robot" value="&lt;u&gt;+ OPERATIONAL, DAMAGED, DESTROYED : String&lt;/u&gt;&lt;br&gt;&lt;u&gt;+ MIN_BATTERY : int = 50&lt;/u&gt;&lt;br&gt;- id : int&lt;br&gt;- name : String&lt;br&gt;- battery : int&lt;br&gt;- status : String&lt;br&gt;- location : Location&lt;br&gt;- busy : boolean" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=6;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=nowrap;html=1;fontSize=11;" vertex="1" parent="c_Robot">
+          <mxGeometry x="0" y="26" width="340" height="128" as="geometry" />
+        </mxCell>
+        <mxCell id="s_Robot" value="" style="line;strokeWidth=1;fillColor=none;align=left;verticalAlign=middle;spacingTop=-1;spacingLeft=3;spacingRight=3;rotatable=0;labelPosition=right;points=[];portConstraint=eastwest;strokeColor=inherit;" vertex="1" parent="c_Robot">
+          <mxGeometry x="0" y="154" width="340" height="8" as="geometry" />
+        </mxCell>
+        <mxCell id="m_Robot" value="+ setStatus(newStatus : String) : void&lt;br&gt;+ moveTo(destination : Location) : boolean&lt;br&gt;+ isUsable() : boolean  {OPERATIONAL &amp;amp;&amp;amp; battery&amp;gt;50}&lt;br&gt;+ isAvailable() : boolean&lt;br&gt;+ assignToMission() : void&lt;br&gt;+ release() : void&lt;br&gt;+ consumeBattery(n : int) : boolean&lt;br&gt;+ recharge(amount : int) : boolean&lt;br&gt;+ canPerform(mission : Mission) : boolean&lt;br&gt;+ canRespondTo(emergency : Emergency) : boolean&lt;br&gt;+ tick() : void  {battery -= 5 if busy}&lt;br&gt;+ isHuman() : boolean" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=6;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=nowrap;html=1;fontSize=11;" vertex="1" parent="c_Robot">
+          <mxGeometry x="0" y="162" width="340" height="188" as="geometry" />
+        </mxCell>
+        <mxCell id="c_ExplorationRover" value="&lt;b&gt;ExplorationRover&lt;/b&gt;" style="swimlane;fontStyle=0;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=0;marginBottom=0;whiteSpace=wrap;html=1;fontSize=12;fillColor=#d5e8d4;strokeColor=#82b366;" vertex="1" parent="1">
+          <mxGeometry x="1025" y="859" width="320" height="155" as="geometry" />
+        </mxCell>
+        <mxCell id="a_ExplorationRover" value="- CAPACITY : int = 5&lt;br&gt;- cargo : Equipment[]&lt;br&gt;- cargoCount : int" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=6;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=nowrap;html=1;fontSize=11;" vertex="1" parent="c_ExplorationRover">
+          <mxGeometry x="0" y="26" width="320" height="53" as="geometry" />
+        </mxCell>
+        <mxCell id="s_ExplorationRover" value="" style="line;strokeWidth=1;fillColor=none;align=left;verticalAlign=middle;spacingTop=-1;spacingLeft=3;spacingRight=3;rotatable=0;labelPosition=right;points=[];portConstraint=eastwest;strokeColor=inherit;" vertex="1" parent="c_ExplorationRover">
+          <mxGeometry x="0" y="79" width="320" height="8" as="geometry" />
+        </mxCell>
+        <mxCell id="m_ExplorationRover" value="+ carry(equipment : Equipment) : boolean&lt;br&gt;+ hasEquipment(equipmentName : String) : boolean&lt;br&gt;+ getCargoCount() : int&lt;br&gt;+ canPerform(mission : Mission) : boolean" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=6;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=nowrap;html=1;fontSize=11;" vertex="1" parent="c_ExplorationRover">
+          <mxGeometry x="0" y="87" width="320" height="68" as="geometry" />
+        </mxCell>
+        <mxCell id="c_RepairRobot" value="&lt;b&gt;RepairRobot&lt;/b&gt;" style="swimlane;fontStyle=0;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=0;marginBottom=0;whiteSpace=wrap;html=1;fontSize=12;fillColor=#d5e8d4;strokeColor=#82b366;" vertex="1" parent="1">
+          <mxGeometry x="1371" y="859" width="310" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="a_RepairRobot" value="" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=6;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=nowrap;html=1;fontSize=11;" vertex="1" parent="c_RepairRobot">
+          <mxGeometry x="0" y="26" width="310" height="8" as="geometry" />
+        </mxCell>
+        <mxCell id="s_RepairRobot" value="" style="line;strokeWidth=1;fillColor=none;align=left;verticalAlign=middle;spacingTop=-1;spacingLeft=3;spacingRight=3;rotatable=0;labelPosition=right;points=[];portConstraint=eastwest;strokeColor=inherit;" vertex="1" parent="c_RepairRobot">
+          <mxGeometry x="0" y="34" width="310" height="8" as="geometry" />
+        </mxCell>
+        <mxCell id="m_RepairRobot" value="+ canPerform(mission : Mission) : boolean&lt;br&gt;+ canRespondTo(emergency : Emergency) : boolean" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=6;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=nowrap;html=1;fontSize=11;" vertex="1" parent="c_RepairRobot">
+          <mxGeometry x="0" y="42" width="310" height="38" as="geometry" />
+        </mxCell>
+        <mxCell id="c_Drone" value="&lt;b&gt;Drone&lt;/b&gt;" style="swimlane;fontStyle=0;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=0;marginBottom=0;whiteSpace=wrap;html=1;fontSize=12;fillColor=#d5e8d4;strokeColor=#82b366;" vertex="1" parent="1">
+          <mxGeometry x="1707" y="859" width="300" height="95" as="geometry" />
+        </mxCell>
+        <mxCell id="a_Drone" value="" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=6;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=nowrap;html=1;fontSize=11;" vertex="1" parent="c_Drone">
+          <mxGeometry x="0" y="26" width="300" height="8" as="geometry" />
+        </mxCell>
+        <mxCell id="s_Drone" value="" style="line;strokeWidth=1;fillColor=none;align=left;verticalAlign=middle;spacingTop=-1;spacingLeft=3;spacingRight=3;rotatable=0;labelPosition=right;points=[];portConstraint=eastwest;strokeColor=inherit;" vertex="1" parent="c_Drone">
+          <mxGeometry x="0" y="34" width="300" height="8" as="geometry" />
+        </mxCell>
+        <mxCell id="m_Drone" value="+ isControllable(env : Environment) : boolean&lt;br&gt;+ canPerform(mission : Mission) : boolean&lt;br&gt;+ canOperateIn(env : Environment) : boolean" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=6;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=nowrap;html=1;fontSize=11;" vertex="1" parent="c_Drone">
+          <mxGeometry x="0" y="42" width="300" height="53" as="geometry" />
+        </mxCell>
+        <mxCell id="c_Validator" value="&lt;b&gt;Validator&lt;/b&gt;" style="swimlane;fontStyle=0;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=0;marginBottom=0;whiteSpace=wrap;html=1;fontSize=12;fillColor=#f5f5f5;strokeColor=#666666;" vertex="1" parent="1">
+          <mxGeometry x="846" y="459" width="260" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="a_Validator" value="" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=6;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=nowrap;html=1;fontSize=11;" vertex="1" parent="c_Validator">
+          <mxGeometry x="0" y="26" width="260" height="8" as="geometry" />
+        </mxCell>
+        <mxCell id="s_Validator" value="" style="line;strokeWidth=1;fillColor=none;align=left;verticalAlign=middle;spacingTop=-1;spacingLeft=3;spacingRight=3;rotatable=0;labelPosition=right;points=[];portConstraint=eastwest;strokeColor=inherit;" vertex="1" parent="c_Validator">
+          <mxGeometry x="0" y="34" width="260" height="8" as="geometry" />
+        </mxCell>
+        <mxCell id="m_Validator" value="&lt;u&gt;+ validateText(text : String) : boolean&lt;/u&gt;&lt;br&gt;&lt;u&gt;+ validateNumber(num : int) : boolean&lt;/u&gt;" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=6;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=nowrap;html=1;fontSize=11;" vertex="1" parent="c_Validator">
+          <mxGeometry x="0" y="42" width="260" height="38" as="geometry" />
+        </mxCell>
+        <mxCell id="c_Simulation" value="&lt;b&gt;Simulation&lt;/b&gt;" style="swimlane;fontStyle=0;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=0;marginBottom=0;whiteSpace=wrap;html=1;fontSize=12;fillColor=#e1d5e7;strokeColor=#9673a6;" vertex="1" parent="1">
+          <mxGeometry x="2036" y="40" width="220" height="155" as="geometry" />
+        </mxCell>
+        <mxCell id="a_Simulation" value="- currentTime : int&lt;br&gt;- env : Environment&lt;br&gt;- colony : Colony" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=6;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=nowrap;html=1;fontSize=11;" vertex="1" parent="c_Simulation">
+          <mxGeometry x="0" y="26" width="220" height="53" as="geometry" />
+        </mxCell>
+        <mxCell id="s_Simulation" value="" style="line;strokeWidth=1;fillColor=none;align=left;verticalAlign=middle;spacingTop=-1;spacingLeft=3;spacingRight=3;rotatable=0;labelPosition=right;points=[];portConstraint=eastwest;strokeColor=inherit;" vertex="1" parent="c_Simulation">
+          <mxGeometry x="0" y="79" width="220" height="8" as="geometry" />
+        </mxCell>
+        <mxCell id="m_Simulation" value="+ advanceTime(n : int) : void&lt;br&gt;+ getCurrentTime() : int&lt;br&gt;+ getEnvironment() : Environment&lt;br&gt;+ getColony() : Colony" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=6;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=nowrap;html=1;fontSize=11;" vertex="1" parent="c_Simulation">
+          <mxGeometry x="0" y="87" width="220" height="68" as="geometry" />
+        </mxCell>
+        <mxCell id="c_Environment" value="&lt;b&gt;Environment&lt;/b&gt;" style="swimlane;fontStyle=0;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=0;marginBottom=0;whiteSpace=wrap;html=1;fontSize=12;fillColor=#e1d5e7;strokeColor=#9673a6;" vertex="1" parent="1">
+          <mxGeometry x="2431" y="40" width="310" height="140" as="geometry" />
+        </mxCell>
+        <mxCell id="a_Environment" value="&lt;u&gt;+ NORMAL, DUST_STORM, COMM_DISRUPTION : String&lt;/u&gt;&lt;br&gt;- condition : String" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=6;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=nowrap;html=1;fontSize=11;" vertex="1" parent="c_Environment">
+          <mxGeometry x="0" y="26" width="310" height="38" as="geometry" />
+        </mxCell>
+        <mxCell id="s_Environment" value="" style="line;strokeWidth=1;fillColor=none;align=left;verticalAlign=middle;spacingTop=-1;spacingLeft=3;spacingRight=3;rotatable=0;labelPosition=right;points=[];portConstraint=eastwest;strokeColor=inherit;" vertex="1" parent="c_Environment">
+          <mxGeometry x="0" y="64" width="310" height="8" as="geometry" />
+        </mxCell>
+        <mxCell id="m_Environment" value="+ getCondition() : String&lt;br&gt;+ setCondition(condition : String) : boolean&lt;br&gt;+ allowsSurfaceOperations() : boolean&lt;br&gt;+ allowsCommunication() : boolean" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=6;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=nowrap;html=1;fontSize=11;" vertex="1" parent="c_Environment">
+          <mxGeometry x="0" y="72" width="310" height="68" as="geometry" />
+        </mxCell>
+        <mxCell id="c_Colony" value="&lt;b&gt;Colony&lt;/b&gt;" style="swimlane;fontStyle=0;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=0;marginBottom=0;whiteSpace=wrap;html=1;fontSize=12;fillColor=#e1d5e7;strokeColor=#9673a6;" vertex="1" parent="1">
+          <mxGeometry x="2111" y="285" width="450" height="260" as="geometry" />
+        </mxCell>
+        <mxCell id="a_Colony" value="- activeMission : Mission&lt;br&gt;- e : Environment&lt;br&gt;- facilities : List&amp;lt;Facility&amp;gt;&lt;br&gt;- crew : List&amp;lt;CrewMember&amp;gt;&lt;br&gt;- robots : List&amp;lt;Robot&amp;gt;&lt;br&gt;- missionHistory : List&amp;lt;Mission&amp;gt;&lt;br&gt;- emergencyLog : List&amp;lt;Emergency&amp;gt;" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=6;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=nowrap;html=1;fontSize=11;" vertex="1" parent="c_Colony">
+          <mxGeometry x="0" y="26" width="450" height="113" as="geometry" />
+        </mxCell>
+        <mxCell id="s_Colony" value="" style="line;strokeWidth=1;fillColor=none;align=left;verticalAlign=middle;spacingTop=-1;spacingLeft=3;spacingRight=3;rotatable=0;labelPosition=right;points=[];portConstraint=eastwest;strokeColor=inherit;" vertex="1" parent="c_Colony">
+          <mxGeometry x="0" y="139" width="450" height="8" as="geometry" />
+        </mxCell>
+        <mxCell id="m_Colony" value="+ submitMission(m : Mission, agents : List&amp;lt;Agent&amp;gt;) : void&lt;br&gt;- checkActiveMission() : void&lt;br&gt;+ tick() : void&lt;br&gt;+ getTotal(type : ResourcesType) : int&lt;br&gt;+ consumeResources(resources : Map&amp;lt;ResourcesType,Integer&amp;gt;) : boolean&lt;br&gt;+ handleEmergency(e : Emergency) : void&lt;br&gt;+ statusReport() : void" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=6;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=nowrap;html=1;fontSize=11;" vertex="1" parent="c_Colony">
+          <mxGeometry x="0" y="147" width="450" height="113" as="geometry" />
+        </mxCell>
+        <mxCell id="c_Mission" value="&lt;b&gt;&lt;i&gt;Mission&lt;/i&gt;&lt;/b&gt;" style="swimlane;fontStyle=0;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=0;marginBottom=0;whiteSpace=wrap;html=1;fontSize=12;fillColor=#ffe6cc;strokeColor=#d79b00;" vertex="1" parent="1">
+          <mxGeometry x="2166" y="655" width="340" height="350" as="geometry" />
+        </mxCell>
+        <mxCell id="a_Mission" value="&lt;u&gt;+ ASSIGNED, IN_PROGRESS, COMPLETED, FAILED : String&lt;/u&gt;&lt;br&gt;- id : int&lt;br&gt;- duration : int&lt;br&gt;- elapsed : int&lt;br&gt;- state : String&lt;br&gt;- failureReason : String&lt;br&gt;- assignedAgents : List&amp;lt;Agent&amp;gt;&lt;br&gt;- requiredCapabilities : List&amp;lt;String&amp;gt;&lt;br&gt;- requiredResources : Map&amp;lt;ResourcesType,Integer&amp;gt;&lt;br&gt;- targetFacilities : List&amp;lt;Facility&amp;gt;" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=6;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=nowrap;html=1;fontSize=11;" vertex="1" parent="c_Mission">
+          <mxGeometry x="0" y="26" width="340" height="158" as="geometry" />
+        </mxCell>
+        <mxCell id="s_Mission" value="" style="line;strokeWidth=1;fillColor=none;align=left;verticalAlign=middle;spacingTop=-1;spacingLeft=3;spacingRight=3;rotatable=0;labelPosition=right;points=[];portConstraint=eastwest;strokeColor=inherit;" vertex="1" parent="c_Mission">
+          <mxGeometry x="0" y="184" width="340" height="8" as="geometry" />
+        </mxCell>
+        <mxCell id="m_Mission" value="&lt;i&gt;+ isAllowedIn(e : Environment) : boolean&lt;/i&gt;&lt;br&gt;+ assign(a : Agent) : void&lt;br&gt;+ start() : void&lt;br&gt;+ tick() : void&lt;br&gt;+ complete() : void&lt;br&gt;+ fail(reason : String) : void&lt;br&gt;+ requires(capability : String) : boolean&lt;br&gt;- releaseAgents() : void&lt;br&gt;+ getState() : String&lt;br&gt;+ getFailureReason() : String" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=6;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=nowrap;html=1;fontSize=11;" vertex="1" parent="c_Mission">
+          <mxGeometry x="0" y="192" width="340" height="158" as="geometry" />
+        </mxCell>
+        <mxCell id="c_ExplorationMission" value="&lt;b&gt;ExplorationMission&lt;/b&gt;" style="swimlane;fontStyle=0;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=0;marginBottom=0;whiteSpace=wrap;html=1;fontSize=12;fillColor=#ffe6cc;strokeColor=#d79b00;" vertex="1" parent="1">
+          <mxGeometry x="1763" y="1095" width="270" height="125" as="geometry" />
+        </mxCell>
+        <mxCell id="a_ExplorationMission" value="- region : String&lt;br&gt;- requiredEquipment : List&amp;lt;Equipment&amp;gt;" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=6;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=nowrap;html=1;fontSize=11;" vertex="1" parent="c_ExplorationMission">
+          <mxGeometry x="0" y="26" width="270" height="38" as="geometry" />
+        </mxCell>
+        <mxCell id="s_ExplorationMission" value="" style="line;strokeWidth=1;fillColor=none;align=left;verticalAlign=middle;spacingTop=-1;spacingLeft=3;spacingRight=3;rotatable=0;labelPosition=right;points=[];portConstraint=eastwest;strokeColor=inherit;" vertex="1" parent="c_ExplorationMission">
+          <mxGeometry x="0" y="64" width="270" height="8" as="geometry" />
+        </mxCell>
+        <mxCell id="m_ExplorationMission" value="+ isAllowedIn(e : Environment) : boolean&lt;br&gt;+ getRegion() : String&lt;br&gt;+ setRegion(newRegion : String) : void" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=6;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=nowrap;html=1;fontSize=11;" vertex="1" parent="c_ExplorationMission">
+          <mxGeometry x="0" y="72" width="270" height="53" as="geometry" />
+        </mxCell>
+        <mxCell id="c_RepairMission" value="&lt;b&gt;RepairMission&lt;/b&gt;" style="swimlane;fontStyle=0;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=0;marginBottom=0;whiteSpace=wrap;html=1;fontSize=12;fillColor=#ffe6cc;strokeColor=#d79b00;" vertex="1" parent="1">
+          <mxGeometry x="2055" y="1095" width="270" height="125" as="geometry" />
+        </mxCell>
+        <mxCell id="a_RepairMission" value="- targetFacility : Facility&lt;br&gt;- targetEquipment : Equipment" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=6;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=nowrap;html=1;fontSize=11;" vertex="1" parent="c_RepairMission">
+          <mxGeometry x="0" y="26" width="270" height="38" as="geometry" />
+        </mxCell>
+        <mxCell id="s_RepairMission" value="" style="line;strokeWidth=1;fillColor=none;align=left;verticalAlign=middle;spacingTop=-1;spacingLeft=3;spacingRight=3;rotatable=0;labelPosition=right;points=[];portConstraint=eastwest;strokeColor=inherit;" vertex="1" parent="c_RepairMission">
+          <mxGeometry x="0" y="64" width="270" height="8" as="geometry" />
+        </mxCell>
+        <mxCell id="m_RepairMission" value="+ isAllowedIn(e : Environment) : boolean&lt;br&gt;+ getTargetFacility() : Facility&lt;br&gt;+ getTargetEquipment() : Equipment" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=6;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=nowrap;html=1;fontSize=11;" vertex="1" parent="c_RepairMission">
+          <mxGeometry x="0" y="72" width="270" height="53" as="geometry" />
+        </mxCell>
+        <mxCell id="c_ResearchMission" value="&lt;b&gt;ResearchMission&lt;/b&gt;" style="swimlane;fontStyle=0;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=0;marginBottom=0;whiteSpace=wrap;html=1;fontSize=12;fillColor=#ffe6cc;strokeColor=#d79b00;" vertex="1" parent="1">
+          <mxGeometry x="2347" y="1095" width="270" height="125" as="geometry" />
+        </mxCell>
+        <mxCell id="a_ResearchMission" value="- lab : Laboratory&lt;br&gt;- requiredSkill : String" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=6;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=nowrap;html=1;fontSize=11;" vertex="1" parent="c_ResearchMission">
+          <mxGeometry x="0" y="26" width="270" height="38" as="geometry" />
+        </mxCell>
+        <mxCell id="s_ResearchMission" value="" style="line;strokeWidth=1;fillColor=none;align=left;verticalAlign=middle;spacingTop=-1;spacingLeft=3;spacingRight=3;rotatable=0;labelPosition=right;points=[];portConstraint=eastwest;strokeColor=inherit;" vertex="1" parent="c_ResearchMission">
+          <mxGeometry x="0" y="64" width="270" height="8" as="geometry" />
+        </mxCell>
+        <mxCell id="m_ResearchMission" value="+ isAllowedIn(e : Environment) : boolean&lt;br&gt;+ getLab() : Laboratory&lt;br&gt;+ getRequiredSkill() : String" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=6;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=nowrap;html=1;fontSize=11;" vertex="1" parent="c_ResearchMission">
+          <mxGeometry x="0" y="72" width="270" height="53" as="geometry" />
+        </mxCell>
+        <mxCell id="c_RescueMission" value="&lt;b&gt;RescueMission&lt;/b&gt;" style="swimlane;fontStyle=0;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=0;marginBottom=0;whiteSpace=wrap;html=1;fontSize=12;fillColor=#ffe6cc;strokeColor=#d79b00;" vertex="1" parent="1">
+          <mxGeometry x="2639" y="1095" width="270" height="65" as="geometry" />
+        </mxCell>
+        <mxCell id="a_RescueMission" value="" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=6;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=nowrap;html=1;fontSize=11;" vertex="1" parent="c_RescueMission">
+          <mxGeometry x="0" y="26" width="270" height="8" as="geometry" />
+        </mxCell>
+        <mxCell id="s_RescueMission" value="" style="line;strokeWidth=1;fillColor=none;align=left;verticalAlign=middle;spacingTop=-1;spacingLeft=3;spacingRight=3;rotatable=0;labelPosition=right;points=[];portConstraint=eastwest;strokeColor=inherit;" vertex="1" parent="c_RescueMission">
+          <mxGeometry x="0" y="34" width="270" height="8" as="geometry" />
+        </mxCell>
+        <mxCell id="m_RescueMission" value="+ isAllowedIn(e : Environment) : boolean" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=6;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=nowrap;html=1;fontSize=11;" vertex="1" parent="c_RescueMission">
+          <mxGeometry x="0" y="42" width="270" height="23" as="geometry" />
+        </mxCell>
+        <mxCell id="c_Facility" value="&lt;b&gt;&lt;i&gt;Facility&lt;/i&gt;&lt;/b&gt;" style="swimlane;fontStyle=0;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=0;marginBottom=0;whiteSpace=wrap;html=1;fontSize=12;fillColor=#fff2cc;strokeColor=#d6b656;" vertex="1" parent="1">
+          <mxGeometry x="3581" y="219" width="410" height="365" as="geometry" />
+        </mxCell>
+        <mxCell id="a_Facility" value="- id : int&lt;br&gt;- name : String&lt;br&gt;- capacity : int&lt;br&gt;- type : FacilityType&lt;br&gt;- operationalStatus : OperationalStatus&lt;br&gt;- equipments : List&amp;lt;Equipment&amp;gt;&lt;br&gt;- resources : List&amp;lt;Resources&amp;gt;&lt;br&gt;- occupants : List&amp;lt;Agent&amp;gt;" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=6;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=nowrap;html=1;fontSize=11;" vertex="1" parent="c_Facility">
+          <mxGeometry x="0" y="26" width="410" height="128" as="geometry" />
+        </mxCell>
+        <mxCell id="s_Facility" value="" style="line;strokeWidth=1;fillColor=none;align=left;verticalAlign=middle;spacingTop=-1;spacingLeft=3;spacingRight=3;rotatable=0;labelPosition=right;points=[];portConstraint=eastwest;strokeColor=inherit;" vertex="1" parent="c_Facility">
+          <mxGeometry x="0" y="154" width="410" height="8" as="geometry" />
+        </mxCell>
+        <mxCell id="m_Facility" value="+ getQuantity(type : ResourcesType) : int&lt;br&gt;+ addResource(type : ResourcesType, amount : int) : boolean&lt;br&gt;+ consumeResource(type : ResourcesType, amount : int) : boolean&lt;br&gt;+ addEquipment(e : Equipment) : boolean&lt;br&gt;+ removeEquipment(e : Equipment) : boolean&lt;br&gt;+ damageAllEquipment() : int&lt;br&gt;+ addOccupants(o : Agent) : boolean&lt;br&gt;+ removeOccupant(a : Agent) : boolean&lt;br&gt;+ isFull() : boolean&lt;br&gt;+ setOperationalStatus(s : OperationalStatus) : boolean&lt;br&gt;+ isOperational() : boolean&lt;br&gt;+ advanceTime() : void&lt;br&gt;+ getLocationName() : String" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=6;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=nowrap;html=1;fontSize=11;" vertex="1" parent="c_Facility">
+          <mxGeometry x="0" y="162" width="410" height="203" as="geometry" />
+        </mxCell>
+        <mxCell id="c_Habitat" value="&lt;b&gt;Habitat&lt;/b&gt;" style="swimlane;fontStyle=0;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=0;marginBottom=0;whiteSpace=wrap;html=1;fontSize=12;fillColor=#fff2cc;strokeColor=#d6b656;" vertex="1" parent="1">
+          <mxGeometry x="2987" y="684" width="280" height="155" as="geometry" />
+        </mxCell>
+        <mxCell id="a_Habitat" value="- lifeSupport : LifeSupportSystem  {final}&lt;br&gt;- leaking : boolean" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=6;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=nowrap;html=1;fontSize=11;" vertex="1" parent="c_Habitat">
+          <mxGeometry x="0" y="26" width="280" height="38" as="geometry" />
+        </mxCell>
+        <mxCell id="s_Habitat" value="" style="line;strokeWidth=1;fillColor=none;align=left;verticalAlign=middle;spacingTop=-1;spacingLeft=3;spacingRight=3;rotatable=0;labelPosition=right;points=[];portConstraint=eastwest;strokeColor=inherit;" vertex="1" parent="c_Habitat">
+          <mxGeometry x="0" y="64" width="280" height="8" as="geometry" />
+        </mxCell>
+        <mxCell id="m_Habitat" value="+ getOxygen() : int&lt;br&gt;+ reduceOxygen(amount : int) : boolean&lt;br&gt;+ setLeaking(leaking : boolean) : void&lt;br&gt;+ stopLeak() : void&lt;br&gt;+ advanceTime() : void" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=6;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=nowrap;html=1;fontSize=11;" vertex="1" parent="c_Habitat">
+          <mxGeometry x="0" y="72" width="280" height="83" as="geometry" />
+        </mxCell>
+        <mxCell id="c_Laboratory" value="&lt;b&gt;Laboratory&lt;/b&gt;" style="swimlane;fontStyle=0;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=0;marginBottom=0;whiteSpace=wrap;html=1;fontSize=12;fillColor=#fff2cc;strokeColor=#d6b656;" vertex="1" parent="1">
+          <mxGeometry x="3289" y="684" width="300" height="140" as="geometry" />
+        </mxCell>
+        <mxCell id="a_Laboratory" value="- onFire : boolean" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=6;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=nowrap;html=1;fontSize=11;" vertex="1" parent="c_Laboratory">
+          <mxGeometry x="0" y="26" width="300" height="23" as="geometry" />
+        </mxCell>
+        <mxCell id="s_Laboratory" value="" style="line;strokeWidth=1;fillColor=none;align=left;verticalAlign=middle;spacingTop=-1;spacingLeft=3;spacingRight=3;rotatable=0;labelPosition=right;points=[];portConstraint=eastwest;strokeColor=inherit;" vertex="1" parent="c_Laboratory">
+          <mxGeometry x="0" y="49" width="300" height="8" as="geometry" />
+        </mxCell>
+        <mxCell id="m_Laboratory" value="+ setFire() : boolean&lt;br&gt;+ extinguish() : boolean&lt;br&gt;+ availability() : boolean&lt;br&gt;+ hasUsableEquipment(name : String) : boolean&lt;br&gt;+ advanceTime() : void" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=6;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=nowrap;html=1;fontSize=11;" vertex="1" parent="c_Laboratory">
+          <mxGeometry x="0" y="57" width="300" height="83" as="geometry" />
+        </mxCell>
+        <mxCell id="c_StorageFacility" value="&lt;b&gt;StorageFacility&lt;/b&gt;" style="swimlane;fontStyle=0;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=0;marginBottom=0;whiteSpace=wrap;html=1;fontSize=12;fillColor=#fff2cc;strokeColor=#d6b656;" vertex="1" parent="1">
+          <mxGeometry x="3611" y="684" width="370" height="110" as="geometry" />
+        </mxCell>
+        <mxCell id="a_StorageFacility" value="- storageCapacity : int" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=6;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=nowrap;html=1;fontSize=11;" vertex="1" parent="c_StorageFacility">
+          <mxGeometry x="0" y="26" width="370" height="23" as="geometry" />
+        </mxCell>
+        <mxCell id="s_StorageFacility" value="" style="line;strokeWidth=1;fillColor=none;align=left;verticalAlign=middle;spacingTop=-1;spacingLeft=3;spacingRight=3;rotatable=0;labelPosition=right;points=[];portConstraint=eastwest;strokeColor=inherit;" vertex="1" parent="c_StorageFacility">
+          <mxGeometry x="0" y="49" width="370" height="8" as="geometry" />
+        </mxCell>
+        <mxCell id="m_StorageFacility" value="+ getFreeStorage() : int&lt;br&gt;+ getUsedStorage() : int&lt;br&gt;+ addResource(r : ResourcesType, amount : int) : boolean" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=6;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=nowrap;html=1;fontSize=11;" vertex="1" parent="c_StorageFacility">
+          <mxGeometry x="0" y="57" width="370" height="53" as="geometry" />
+        </mxCell>
+        <mxCell id="c_PowerStation" value="&lt;b&gt;PowerStation&lt;/b&gt;" style="swimlane;fontStyle=0;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=0;marginBottom=0;whiteSpace=wrap;html=1;fontSize=12;fillColor=#fff2cc;strokeColor=#d6b656;" vertex="1" parent="1">
+          <mxGeometry x="4003" y="684" width="370" height="110" as="geometry" />
+        </mxCell>
+        <mxCell id="a_PowerStation" value="- powerOutput : int" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=6;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=nowrap;html=1;fontSize=11;" vertex="1" parent="c_PowerStation">
+          <mxGeometry x="0" y="26" width="370" height="23" as="geometry" />
+        </mxCell>
+        <mxCell id="s_PowerStation" value="" style="line;strokeWidth=1;fillColor=none;align=left;verticalAlign=middle;spacingTop=-1;spacingLeft=3;spacingRight=3;rotatable=0;labelPosition=right;points=[];portConstraint=eastwest;strokeColor=inherit;" vertex="1" parent="c_PowerStation">
+          <mxGeometry x="0" y="49" width="370" height="8" as="geometry" />
+        </mxCell>
+        <mxCell id="m_PowerStation" value="+ supplyPower(target : Facility, amount : int) : boolean&lt;br&gt;+ generate() : boolean&lt;br&gt;+ advanceTime() : void" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=6;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=nowrap;html=1;fontSize=11;" vertex="1" parent="c_PowerStation">
+          <mxGeometry x="0" y="57" width="370" height="53" as="geometry" />
+        </mxCell>
+        <mxCell id="c_CommunicationStation" value="&lt;b&gt;CommunicationStation&lt;/b&gt;" style="swimlane;fontStyle=0;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=0;marginBottom=0;whiteSpace=wrap;html=1;fontSize=12;fillColor=#fff2cc;strokeColor=#d6b656;" vertex="1" parent="1">
+          <mxGeometry x="4395" y="684" width="190" height="110" as="geometry" />
+        </mxCell>
+        <mxCell id="a_CommunicationStation" value="- signalDisturbed : boolean" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=6;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=nowrap;html=1;fontSize=11;" vertex="1" parent="c_CommunicationStation">
+          <mxGeometry x="0" y="26" width="190" height="23" as="geometry" />
+        </mxCell>
+        <mxCell id="s_CommunicationStation" value="" style="line;strokeWidth=1;fillColor=none;align=left;verticalAlign=middle;spacingTop=-1;spacingLeft=3;spacingRight=3;rotatable=0;labelPosition=right;points=[];portConstraint=eastwest;strokeColor=inherit;" vertex="1" parent="c_CommunicationStation">
+          <mxGeometry x="0" y="49" width="190" height="8" as="geometry" />
+        </mxCell>
+        <mxCell id="m_CommunicationStation" value="+ disturbSignal() : void&lt;br&gt;+ restoreSignal() : void&lt;br&gt;+ isLinkActive() : boolean" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=6;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=nowrap;html=1;fontSize=11;" vertex="1" parent="c_CommunicationStation">
+          <mxGeometry x="0" y="57" width="190" height="53" as="geometry" />
+        </mxCell>
+        <mxCell id="c_Resources" value="&lt;b&gt;Resources&lt;/b&gt;" style="swimlane;fontStyle=0;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=0;marginBottom=0;whiteSpace=wrap;html=1;fontSize=12;fillColor=#fff2cc;strokeColor=#d6b656;" vertex="1" parent="1">
+          <mxGeometry x="3501" y="939" width="570" height="185" as="geometry" />
+        </mxCell>
+        <mxCell id="a_Resources" value="- resource : ResourcesType  {final}&lt;br&gt;- quantity : int" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=6;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=nowrap;html=1;fontSize=11;" vertex="1" parent="c_Resources">
+          <mxGeometry x="0" y="26" width="570" height="38" as="geometry" />
+        </mxCell>
+        <mxCell id="s_Resources" value="" style="line;strokeWidth=1;fillColor=none;align=left;verticalAlign=middle;spacingTop=-1;spacingLeft=3;spacingRight=3;rotatable=0;labelPosition=right;points=[];portConstraint=eastwest;strokeColor=inherit;" vertex="1" parent="c_Resources">
+          <mxGeometry x="0" y="64" width="570" height="8" as="geometry" />
+        </mxCell>
+        <mxCell id="m_Resources" value="+ add(amount : int) : boolean&lt;br&gt;+ consume(amount : int) : boolean&lt;br&gt;+ setQuantity(quantity : int) : boolean&lt;br&gt;&lt;u&gt;+ getColonyTotal(facilities : List&amp;lt;Facility&amp;gt;, r : ResourcesType) : int&lt;/u&gt;&lt;br&gt;&lt;u&gt;+ getColonyTotals(facilities : List&amp;lt;Facility&amp;gt;) : Map&amp;lt;ResourcesType,Integer&amp;gt;&lt;/u&gt;&lt;br&gt;&lt;u&gt;+ canSupply(facilities : List&amp;lt;Facility&amp;gt;, request : Map&amp;lt;ResourcesType,Integer&amp;gt;) : boolean&lt;/u&gt;&lt;br&gt;&lt;u&gt;+ consume(facilities : List&amp;lt;Facility&amp;gt;, request : Map&amp;lt;ResourcesType,Integer&amp;gt;) : boolean&lt;/u&gt;" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=6;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=nowrap;html=1;fontSize=11;" vertex="1" parent="c_Resources">
+          <mxGeometry x="0" y="72" width="570" height="113" as="geometry" />
+        </mxCell>
+        <mxCell id="c_Equipment" value="&lt;b&gt;Equipment&lt;/b&gt;" style="swimlane;fontStyle=0;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=0;marginBottom=0;whiteSpace=wrap;html=1;fontSize=12;fillColor=#fff2cc;strokeColor=#d6b656;" vertex="1" parent="1">
+          <mxGeometry x="4156" y="939" width="320" height="140" as="geometry" />
+        </mxCell>
+        <mxCell id="a_Equipment" value="- name : String&lt;br&gt;- quantity : int&lt;br&gt;- damaged : boolean" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=6;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=nowrap;html=1;fontSize=11;" vertex="1" parent="c_Equipment">
+          <mxGeometry x="0" y="26" width="320" height="53" as="geometry" />
+        </mxCell>
+        <mxCell id="s_Equipment" value="" style="line;strokeWidth=1;fillColor=none;align=left;verticalAlign=middle;spacingTop=-1;spacingLeft=3;spacingRight=3;rotatable=0;labelPosition=right;points=[];portConstraint=eastwest;strokeColor=inherit;" vertex="1" parent="c_Equipment">
+          <mxGeometry x="0" y="79" width="320" height="8" as="geometry" />
+        </mxCell>
+        <mxCell id="m_Equipment" value="+ isUsable() : boolean  {!damaged &amp;amp;&amp;amp; quantity&amp;gt;0}&lt;br&gt;+ damage() : void&lt;br&gt;+ repair() : void" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=6;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=nowrap;html=1;fontSize=11;" vertex="1" parent="c_Equipment">
+          <mxGeometry x="0" y="87" width="320" height="53" as="geometry" />
+        </mxCell>
+        <mxCell id="c_LifeSupportSystem" value="&lt;b&gt;LifeSupportSystem&lt;/b&gt;" style="swimlane;fontStyle=0;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=0;marginBottom=0;whiteSpace=wrap;html=1;fontSize=12;fillColor=#fff2cc;strokeColor=#d6b656;" vertex="1" parent="1">
+          <mxGeometry x="3081" y="939" width="310" height="155" as="geometry" />
+        </mxCell>
+        <mxCell id="a_LifeSupportSystem" value="- status : boolean&lt;br&gt;- consumptionRate : int&lt;br&gt;- airQuality : int" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=6;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=nowrap;html=1;fontSize=11;" vertex="1" parent="c_LifeSupportSystem">
+          <mxGeometry x="0" y="26" width="310" height="53" as="geometry" />
+        </mxCell>
+        <mxCell id="s_LifeSupportSystem" value="" style="line;strokeWidth=1;fillColor=none;align=left;verticalAlign=middle;spacingTop=-1;spacingLeft=3;spacingRight=3;rotatable=0;labelPosition=right;points=[];portConstraint=eastwest;strokeColor=inherit;" vertex="1" parent="c_LifeSupportSystem">
+          <mxGeometry x="0" y="79" width="310" height="8" as="geometry" />
+        </mxCell>
+        <mxCell id="m_LifeSupportSystem" value="+ filterAir() : boolean&lt;br&gt;+ restore() : void&lt;br&gt;+ tick() : void&lt;br&gt;+ increaseConsumptionRate(rate : int) : boolean" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=6;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=nowrap;html=1;fontSize=11;" vertex="1" parent="c_LifeSupportSystem">
+          <mxGeometry x="0" y="87" width="310" height="68" as="geometry" />
+        </mxCell>
+        <mxCell id="c_Emergency" value="&lt;b&gt;&lt;i&gt;Emergency&lt;/i&gt;&lt;/b&gt;" style="swimlane;fontStyle=0;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=0;marginBottom=0;whiteSpace=wrap;html=1;fontSize=12;fillColor=#f8cecc;strokeColor=#b85450;" vertex="1" parent="1">
+          <mxGeometry x="2156" y="1340" width="360" height="440" as="geometry" />
+        </mxCell>
+        <mxCell id="a_Emergency" value="- id : int&lt;br&gt;- type : EmergencyType&lt;br&gt;- location : FacilityType&lt;br&gt;- description : String&lt;br&gt;- status : EmergencyStatus&lt;br&gt;- responders : List&amp;lt;Agent&amp;gt;&lt;br&gt;# allAgents : List&amp;lt;Agent&amp;gt;&lt;br&gt;- unresolvedReason : String" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=6;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=nowrap;html=1;fontSize=11;" vertex="1" parent="c_Emergency">
+          <mxGeometry x="0" y="26" width="360" height="128" as="geometry" />
+        </mxCell>
+        <mxCell id="s_Emergency" value="" style="line;strokeWidth=1;fillColor=none;align=left;verticalAlign=middle;spacingTop=-1;spacingLeft=3;spacingRight=3;rotatable=0;labelPosition=right;points=[];portConstraint=eastwest;strokeColor=inherit;" vertex="1" parent="c_Emergency">
+          <mxGeometry x="0" y="154" width="360" height="8" as="geometry" />
+        </mxCell>
+        <mxCell id="m_Emergency" value="&lt;i&gt;+ hasRequiredResponders() : boolean&lt;/i&gt;&lt;br&gt;+ handleEmergency() : void&lt;br&gt;+ setAllAgents(agents : List&amp;lt;Agent&amp;gt;) : void&lt;br&gt;+ applyInitialEffect() : void&lt;br&gt;+ applyUnresolvedPenalty() : void&lt;br&gt;+ checkPreconditions() : String&lt;br&gt;+ getAffectedFacility() : Facility&lt;br&gt;+ getRequiredResources() : Map&amp;lt;ResourcesType,Integer&amp;gt;&lt;br&gt;+ getResponders(allAgents : List&amp;lt;Agent&amp;gt;) : List&amp;lt;Agent&amp;gt;&lt;br&gt;+ responders() : List&amp;lt;Agent&amp;gt;&lt;br&gt;+ addResponder(a : Agent) : void&lt;br&gt;+ resolve() : void&lt;br&gt;+ resolveEmergency() : boolean&lt;br&gt;+ markUnresolved(reason : String) : void&lt;br&gt;+ getUnresolvedReason() : String&lt;br&gt;+ getType() : EmergencyType&lt;br&gt;+ getStatus() : EmergencyStatus&lt;br&gt;+ setStatus(status : EmergencyStatus) : void" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=6;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=nowrap;html=1;fontSize=11;" vertex="1" parent="c_Emergency">
+          <mxGeometry x="0" y="162" width="360" height="278" as="geometry" />
+        </mxCell>
+        <mxCell id="c_OxygenLeak" value="&lt;b&gt;OxygenLeak&lt;/b&gt;" style="swimlane;fontStyle=0;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=0;marginBottom=0;whiteSpace=wrap;html=1;fontSize=12;fillColor=#f8cecc;strokeColor=#b85450;" vertex="1" parent="1">
+          <mxGeometry x="1818" y="1870" width="270" height="230" as="geometry" />
+        </mxCell>
+        <mxCell id="a_OxygenLeak" value="- leak : boolean&lt;br&gt;- affectedHabitat : Habitat  {final}&lt;br&gt;- oxygenLoss : double  {final}" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=6;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=nowrap;html=1;fontSize=11;" vertex="1" parent="c_OxygenLeak">
+          <mxGeometry x="0" y="26" width="270" height="53" as="geometry" />
+        </mxCell>
+        <mxCell id="s_OxygenLeak" value="" style="line;strokeWidth=1;fillColor=none;align=left;verticalAlign=middle;spacingTop=-1;spacingLeft=3;spacingRight=3;rotatable=0;labelPosition=right;points=[];portConstraint=eastwest;strokeColor=inherit;" vertex="1" parent="c_OxygenLeak">
+          <mxGeometry x="0" y="79" width="270" height="8" as="geometry" />
+        </mxCell>
+        <mxCell id="m_OxygenLeak" value="+ detect() : void&lt;br&gt;+ deduceOxygen(loss : double) : boolean&lt;br&gt;+ repairLeak() : boolean&lt;br&gt;+ hasRequiredResponders() : boolean&lt;br&gt;+ applyInitialEffect() : void&lt;br&gt;+ applyUnresolvedPenalty() : void&lt;br&gt;+ resolve() : void&lt;br&gt;+ getAffectedFacility() : Facility&lt;br&gt;+ getRequiredResources() : Map&amp;lt;ResourcesType,Integer&amp;gt;" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=6;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=nowrap;html=1;fontSize=11;" vertex="1" parent="c_OxygenLeak">
+          <mxGeometry x="0" y="87" width="270" height="143" as="geometry" />
+        </mxCell>
+        <mxCell id="c_Fire" value="&lt;b&gt;Fire&lt;/b&gt;" style="swimlane;fontStyle=0;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=0;marginBottom=0;whiteSpace=wrap;html=1;fontSize=12;fillColor=#f8cecc;strokeColor=#b85450;" vertex="1" parent="1">
+          <mxGeometry x="2110" y="1870" width="270" height="260" as="geometry" />
+        </mxCell>
+        <mxCell id="a_Fire" value="- fireActive : boolean&lt;br&gt;- severity : int  {1..3}&lt;br&gt;- oxygenConsumption : int&lt;br&gt;- affectedLab : Laboratory&lt;br&gt;- followUpMedical : MedicalEmergency" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=6;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=nowrap;html=1;fontSize=11;" vertex="1" parent="c_Fire">
+          <mxGeometry x="0" y="26" width="270" height="83" as="geometry" />
+        </mxCell>
+        <mxCell id="s_Fire" value="" style="line;strokeWidth=1;fillColor=none;align=left;verticalAlign=middle;spacingTop=-1;spacingLeft=3;spacingRight=3;rotatable=0;labelPosition=right;points=[];portConstraint=eastwest;strokeColor=inherit;" vertex="1" parent="c_Fire">
+          <mxGeometry x="0" y="109" width="270" height="8" as="geometry" />
+        </mxCell>
+        <mxCell id="m_Fire" value="+ setFire() : void&lt;br&gt;+ extinguishFire() : boolean&lt;br&gt;+ consumeOxygen() : void&lt;br&gt;- escalateToMedicalEmergency() : void&lt;br&gt;+ tick() : void&lt;br&gt;+ hasRequiredResponders() : boolean&lt;br&gt;+ applyInitialEffect() : void&lt;br&gt;+ resolve() : void&lt;br&gt;+ getAffectedFacility() : Facility" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=6;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=nowrap;html=1;fontSize=11;" vertex="1" parent="c_Fire">
+          <mxGeometry x="0" y="117" width="270" height="143" as="geometry" />
+        </mxCell>
+        <mxCell id="c_RoverBreakdown" value="&lt;b&gt;RoverBreakdown&lt;/b&gt;" style="swimlane;fontStyle=0;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=0;marginBottom=0;whiteSpace=wrap;html=1;fontSize=12;fillColor=#f8cecc;strokeColor=#b85450;" vertex="1" parent="1">
+          <mxGeometry x="2402" y="1870" width="270" height="260" as="geometry" />
+        </mxCell>
+        <mxCell id="a_RoverBreakdown" value="- explorationRover : ExplorationRover&lt;br&gt;- breakdownLocation : Facility&lt;br&gt;- requiredRepairParts : int&lt;br&gt;- availableSpareParts : int&lt;br&gt;- requiredNumberOfResponder : int&lt;br&gt;- repairStatus : boolean" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=6;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=nowrap;html=1;fontSize=11;" vertex="1" parent="c_RoverBreakdown">
+          <mxGeometry x="0" y="26" width="270" height="98" as="geometry" />
+        </mxCell>
+        <mxCell id="s_RoverBreakdown" value="" style="line;strokeWidth=1;fillColor=none;align=left;verticalAlign=middle;spacingTop=-1;spacingLeft=3;spacingRight=3;rotatable=0;labelPosition=right;points=[];portConstraint=eastwest;strokeColor=inherit;" vertex="1" parent="c_RoverBreakdown">
+          <mxGeometry x="0" y="124" width="270" height="8" as="geometry" />
+        </mxCell>
+        <mxCell id="m_RoverBreakdown" value="+ breakdown() : boolean&lt;br&gt;+ repairRover() : boolean&lt;br&gt;+ checkRepairParts() : boolean&lt;br&gt;+ hasRequiredResponders() : boolean&lt;br&gt;+ applyInitialEffect() : void&lt;br&gt;+ resolve() : void&lt;br&gt;+ getAffectedFacility() : Facility&lt;br&gt;+ getRequiredResources() : Map&amp;lt;ResourcesType,Integer&amp;gt;" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=6;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=nowrap;html=1;fontSize=11;" vertex="1" parent="c_RoverBreakdown">
+          <mxGeometry x="0" y="132" width="270" height="128" as="geometry" />
+        </mxCell>
+        <mxCell id="c_MedicalEmergency" value="&lt;b&gt;MedicalEmergency&lt;/b&gt;" style="swimlane;fontStyle=0;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=0;marginBottom=0;whiteSpace=wrap;html=1;fontSize=12;fillColor=#f8cecc;strokeColor=#b85450;" vertex="1" parent="1">
+          <mxGeometry x="2694" y="1870" width="280" height="260" as="geometry" />
+        </mxCell>
+        <mxCell id="a_MedicalEmergency" value="- patient : CrewMember  {final}&lt;br&gt;- affectedFacility : Facility  {final}&lt;br&gt;- requiredNumberOfResponder : int&lt;br&gt;- medicalSuppliesRequired : int&lt;br&gt;- healthRecovery : int&lt;br&gt;- treatmentSuccessful : boolean" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=6;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=nowrap;html=1;fontSize=11;" vertex="1" parent="c_MedicalEmergency">
+          <mxGeometry x="0" y="26" width="280" height="98" as="geometry" />
+        </mxCell>
+        <mxCell id="s_MedicalEmergency" value="" style="line;strokeWidth=1;fillColor=none;align=left;verticalAlign=middle;spacingTop=-1;spacingLeft=3;spacingRight=3;rotatable=0;labelPosition=right;points=[];portConstraint=eastwest;strokeColor=inherit;" vertex="1" parent="c_MedicalEmergency">
+          <mxGeometry x="0" y="124" width="280" height="8" as="geometry" />
+        </mxCell>
+        <mxCell id="m_MedicalEmergency" value="+ checkMedicalSupplies() : boolean&lt;br&gt;+ treatPatient() : boolean&lt;br&gt;+ hasRequiredResponders() : boolean&lt;br&gt;+ checkPreconditions() : String&lt;br&gt;+ applyUnresolvedPenalty() : void&lt;br&gt;+ resolve() : void&lt;br&gt;+ getAffectedFacility() : Facility&lt;br&gt;+ getRequiredResources() : Map&amp;lt;ResourcesType,Integer&amp;gt;" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=6;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=nowrap;html=1;fontSize=11;" vertex="1" parent="c_MedicalEmergency">
+          <mxGeometry x="0" y="132" width="280" height="128" as="geometry" />
+        </mxCell>
+        <mxCell id="c_ResourcesType" value="&amp;lt;&amp;lt;enumeration&amp;gt;&amp;gt;&lt;br&gt;&lt;b&gt;ResourcesType&lt;/b&gt;" style="swimlane;fontStyle=0;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=40;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=0;marginBottom=0;whiteSpace=wrap;html=1;fontSize=12;fillColor=#f5f5f5;strokeColor=#666666;" vertex="1" parent="1">
+          <mxGeometry x="431" y="1400" width="190" height="153" as="geometry" />
+        </mxCell>
+        <mxCell id="a_ResourcesType" value="OXYGEN&lt;br&gt;WATER&lt;br&gt;FOOD&lt;br&gt;FUEL&lt;br&gt;BATTERY_POWER&lt;br&gt;MEDICAL_SUPPLIES&lt;br&gt;SPARE_PARTS" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=6;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=nowrap;html=1;fontSize=11;" vertex="1" parent="c_ResourcesType">
+          <mxGeometry x="0" y="40" width="190" height="113" as="geometry" />
+        </mxCell>
+        <mxCell id="c_EmergencyType" value="&amp;lt;&amp;lt;enumeration&amp;gt;&amp;gt;&lt;br&gt;&lt;b&gt;EmergencyType&lt;/b&gt;" style="swimlane;fontStyle=0;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=40;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=0;marginBottom=0;whiteSpace=wrap;html=1;fontSize=12;fillColor=#f5f5f5;strokeColor=#666666;" vertex="1" parent="1">
+          <mxGeometry x="651" y="1400" width="190" height="108" as="geometry" />
+        </mxCell>
+        <mxCell id="a_EmergencyType" value="OXYGEN_LEAK&lt;br&gt;FIRE&lt;br&gt;ROVER_BREAKDOWN&lt;br&gt;MEDICAL_EMERGENCY" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=6;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=nowrap;html=1;fontSize=11;" vertex="1" parent="c_EmergencyType">
+          <mxGeometry x="0" y="40" width="190" height="68" as="geometry" />
+        </mxCell>
+        <mxCell id="c_EmergencyStatus" value="&amp;lt;&amp;lt;enumeration&amp;gt;&amp;gt;&lt;br&gt;&lt;b&gt;EmergencyStatus&lt;/b&gt;" style="swimlane;fontStyle=0;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=40;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=0;marginBottom=0;whiteSpace=wrap;html=1;fontSize=12;fillColor=#f5f5f5;strokeColor=#666666;" vertex="1" parent="1">
+          <mxGeometry x="871" y="1400" width="190" height="108" as="geometry" />
+        </mxCell>
+        <mxCell id="a_EmergencyStatus" value="DETECTED&lt;br&gt;RESPONDING&lt;br&gt;RESOLVED&lt;br&gt;UNRESOLVED" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=6;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=nowrap;html=1;fontSize=11;" vertex="1" parent="c_EmergencyStatus">
+          <mxGeometry x="0" y="40" width="190" height="68" as="geometry" />
+        </mxCell>
+        <mxCell id="c_FacilityType" value="&amp;lt;&amp;lt;enumeration&amp;gt;&amp;gt;&lt;br&gt;&lt;b&gt;FacilityType&lt;/b&gt;" style="swimlane;fontStyle=0;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=40;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=0;marginBottom=0;whiteSpace=wrap;html=1;fontSize=12;fillColor=#f5f5f5;strokeColor=#666666;" vertex="1" parent="1">
+          <mxGeometry x="541" y="1620" width="190" height="123" as="geometry" />
+        </mxCell>
+        <mxCell id="a_FacilityType" value="HABITAT&lt;br&gt;LABORATORY&lt;br&gt;STORAGE&lt;br&gt;POWER_STATION&lt;br&gt;COMMUNICATION" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=6;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=nowrap;html=1;fontSize=11;" vertex="1" parent="c_FacilityType">
+          <mxGeometry x="0" y="40" width="190" height="83" as="geometry" />
+        </mxCell>
+        <mxCell id="c_OperationalStatus" value="&amp;lt;&amp;lt;enumeration&amp;gt;&amp;gt;&lt;br&gt;&lt;b&gt;OperationalStatus&lt;/b&gt;" style="swimlane;fontStyle=0;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=40;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=0;marginBottom=0;whiteSpace=wrap;html=1;fontSize=12;fillColor=#f5f5f5;strokeColor=#666666;" vertex="1" parent="1">
+          <mxGeometry x="761" y="1620" width="190" height="108" as="geometry" />
+        </mxCell>
+        <mxCell id="a_OperationalStatus" value="OPERATIONAL&lt;br&gt;UNDER_MAINTENANCE&lt;br&gt;DAMAGED&lt;br&gt;DESTROYED" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=6;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=nowrap;html=1;fontSize=11;" vertex="1" parent="c_OperationalStatus">
+          <mxGeometry x="0" y="40" width="190" height="68" as="geometry" />
+        </mxCell>
+        <mxCell id="e0" value="" style="html=1;rounded=0;edgeStyle=orthogonalEdgeStyle;jumpStyle=arc;fontSize=11;endArrow=block;endSize=14;endFill=0;exitX=0.5;exitY=0;entryX=0.5;entryY=1;" edge="1" parent="1" source="c_Scientist" target="c_CrewMember">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e1" value="" style="html=1;rounded=0;edgeStyle=orthogonalEdgeStyle;jumpStyle=arc;fontSize=11;endArrow=block;endSize=14;endFill=0;exitX=0.5;exitY=0;entryX=0.5;entryY=1;" edge="1" parent="1" source="c_Engineer" target="c_CrewMember">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e2" value="" style="html=1;rounded=0;edgeStyle=orthogonalEdgeStyle;jumpStyle=arc;fontSize=11;endArrow=block;endSize=14;endFill=0;exitX=0.5;exitY=0;entryX=0.5;entryY=1;" edge="1" parent="1" source="c_MedicalOfficer" target="c_CrewMember">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e3" value="" style="html=1;rounded=0;edgeStyle=orthogonalEdgeStyle;jumpStyle=arc;fontSize=11;endArrow=block;endSize=14;endFill=0;exitX=0.5;exitY=0;entryX=0.5;entryY=1;" edge="1" parent="1" source="c_ExplorationRover" target="c_Robot">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e4" value="" style="html=1;rounded=0;edgeStyle=orthogonalEdgeStyle;jumpStyle=arc;fontSize=11;endArrow=block;endSize=14;endFill=0;exitX=0.5;exitY=0;entryX=0.5;entryY=1;" edge="1" parent="1" source="c_RepairRobot" target="c_Robot">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e5" value="" style="html=1;rounded=0;edgeStyle=orthogonalEdgeStyle;jumpStyle=arc;fontSize=11;endArrow=block;endSize=14;endFill=0;exitX=0.5;exitY=0;entryX=0.5;entryY=1;" edge="1" parent="1" source="c_Drone" target="c_Robot">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e6" value="" style="html=1;rounded=0;edgeStyle=orthogonalEdgeStyle;jumpStyle=arc;fontSize=11;endArrow=block;endSize=14;endFill=0;exitX=0.5;exitY=0;entryX=0.5;entryY=1;" edge="1" parent="1" source="c_Habitat" target="c_Facility">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e7" value="" style="html=1;rounded=0;edgeStyle=orthogonalEdgeStyle;jumpStyle=arc;fontSize=11;endArrow=block;endSize=14;endFill=0;exitX=0.5;exitY=0;entryX=0.5;entryY=1;" edge="1" parent="1" source="c_Laboratory" target="c_Facility">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e8" value="" style="html=1;rounded=0;edgeStyle=orthogonalEdgeStyle;jumpStyle=arc;fontSize=11;endArrow=block;endSize=14;endFill=0;exitX=0.5;exitY=0;entryX=0.5;entryY=1;" edge="1" parent="1" source="c_StorageFacility" target="c_Facility">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e9" value="" style="html=1;rounded=0;edgeStyle=orthogonalEdgeStyle;jumpStyle=arc;fontSize=11;endArrow=block;endSize=14;endFill=0;exitX=0.5;exitY=0;entryX=0.5;entryY=1;" edge="1" parent="1" source="c_PowerStation" target="c_Facility">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e10" value="" style="html=1;rounded=0;edgeStyle=orthogonalEdgeStyle;jumpStyle=arc;fontSize=11;endArrow=block;endSize=14;endFill=0;exitX=0.5;exitY=0;entryX=0.5;entryY=1;" edge="1" parent="1" source="c_CommunicationStation" target="c_Facility">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e11" value="" style="html=1;rounded=0;edgeStyle=orthogonalEdgeStyle;jumpStyle=arc;fontSize=11;endArrow=block;endSize=14;endFill=0;exitX=0.5;exitY=0;entryX=0.5;entryY=1;" edge="1" parent="1" source="c_ExplorationMission" target="c_Mission">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e12" value="" style="html=1;rounded=0;edgeStyle=orthogonalEdgeStyle;jumpStyle=arc;fontSize=11;endArrow=block;endSize=14;endFill=0;exitX=0.5;exitY=0;entryX=0.5;entryY=1;" edge="1" parent="1" source="c_RepairMission" target="c_Mission">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e13" value="" style="html=1;rounded=0;edgeStyle=orthogonalEdgeStyle;jumpStyle=arc;fontSize=11;endArrow=block;endSize=14;endFill=0;exitX=0.5;exitY=0;entryX=0.5;entryY=1;" edge="1" parent="1" source="c_ResearchMission" target="c_Mission">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e14" value="" style="html=1;rounded=0;edgeStyle=orthogonalEdgeStyle;jumpStyle=arc;fontSize=11;endArrow=block;endSize=14;endFill=0;exitX=0.5;exitY=0;entryX=0.5;entryY=1;" edge="1" parent="1" source="c_RescueMission" target="c_Mission">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e15" value="" style="html=1;rounded=0;edgeStyle=orthogonalEdgeStyle;jumpStyle=arc;fontSize=11;endArrow=block;endSize=14;endFill=0;exitX=0.5;exitY=0;entryX=0.5;entryY=1;" edge="1" parent="1" source="c_OxygenLeak" target="c_Emergency">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e16" value="" style="html=1;rounded=0;edgeStyle=orthogonalEdgeStyle;jumpStyle=arc;fontSize=11;endArrow=block;endSize=14;endFill=0;exitX=0.5;exitY=0;entryX=0.5;entryY=1;" edge="1" parent="1" source="c_Fire" target="c_Emergency">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e17" value="" style="html=1;rounded=0;edgeStyle=orthogonalEdgeStyle;jumpStyle=arc;fontSize=11;endArrow=block;endSize=14;endFill=0;exitX=0.5;exitY=0;entryX=0.5;entryY=1;" edge="1" parent="1" source="c_RoverBreakdown" target="c_Emergency">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e18" value="" style="html=1;rounded=0;edgeStyle=orthogonalEdgeStyle;jumpStyle=arc;fontSize=11;endArrow=block;endSize=14;endFill=0;exitX=0.5;exitY=0;entryX=0.5;entryY=1;" edge="1" parent="1" source="c_MedicalEmergency" target="c_Emergency">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e19" value="" style="html=1;rounded=0;edgeStyle=orthogonalEdgeStyle;jumpStyle=arc;fontSize=11;endArrow=block;endSize=14;endFill=0;dashed=1;" edge="1" parent="1" source="c_CrewMember" target="c_Agent">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e20" value="" style="html=1;rounded=0;edgeStyle=orthogonalEdgeStyle;jumpStyle=arc;fontSize=11;endArrow=block;endSize=14;endFill=0;dashed=1;" edge="1" parent="1" source="c_Robot" target="c_Agent">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e21" value="" style="html=1;rounded=0;edgeStyle=orthogonalEdgeStyle;jumpStyle=arc;fontSize=11;endArrow=block;endSize=14;endFill=0;dashed=1;" edge="1" parent="1" source="c_Facility" target="c_Location">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e22" value="" style="html=1;rounded=0;edgeStyle=orthogonalEdgeStyle;jumpStyle=arc;fontSize=11;endArrow=block;endSize=14;endFill=0;dashed=1;" edge="1" parent="1" source="c_MarsSurface" target="c_Location">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e23" value="" style="html=1;rounded=0;edgeStyle=orthogonalEdgeStyle;jumpStyle=arc;fontSize=11;startArrow=diamondThin;startFill=1;startSize=16;endArrow=none;" edge="1" parent="1" source="c_Habitat" target="c_LifeSupportSystem">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e23s" value="1" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];fontSize=11;labelBackgroundColor=none;" vertex="1" connectable="0" parent="e23">
+          <mxGeometry x="-0.88" relative="1" as="geometry">
+            <mxPoint y="-11" as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="e23t" value="1" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];fontSize=11;labelBackgroundColor=none;" vertex="1" connectable="0" parent="e23">
+          <mxGeometry x="0.88" relative="1" as="geometry">
+            <mxPoint y="-11" as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="e23r" value="lifeSupport" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];fontSize=11;labelBackgroundColor=none;" vertex="1" connectable="0" parent="e23">
+          <mxGeometry x="0.0" relative="1" as="geometry">
+            <mxPoint y="-11" as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="e24" value="" style="html=1;rounded=0;edgeStyle=orthogonalEdgeStyle;jumpStyle=arc;fontSize=11;startArrow=diamondThin;startFill=1;startSize=16;endArrow=none;" edge="1" parent="1" source="c_Facility" target="c_Resources">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e24s" value="1" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];fontSize=11;labelBackgroundColor=none;" vertex="1" connectable="0" parent="e24">
+          <mxGeometry x="-0.88" relative="1" as="geometry">
+            <mxPoint y="-11" as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="e24t" value="0..*" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];fontSize=11;labelBackgroundColor=none;" vertex="1" connectable="0" parent="e24">
+          <mxGeometry x="0.88" relative="1" as="geometry">
+            <mxPoint y="-11" as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="e24r" value="resources" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];fontSize=11;labelBackgroundColor=none;" vertex="1" connectable="0" parent="e24">
+          <mxGeometry x="0.0" relative="1" as="geometry">
+            <mxPoint y="-11" as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="e25" value="" style="html=1;rounded=0;edgeStyle=orthogonalEdgeStyle;jumpStyle=arc;fontSize=11;startArrow=diamondThin;startFill=0;startSize=16;endArrow=none;" edge="1" parent="1" source="c_Colony" target="c_CrewMember">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e25s" value="1" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];fontSize=11;labelBackgroundColor=none;" vertex="1" connectable="0" parent="e25">
+          <mxGeometry x="-0.88" relative="1" as="geometry">
+            <mxPoint y="-11" as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="e25t" value="0..*" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];fontSize=11;labelBackgroundColor=none;" vertex="1" connectable="0" parent="e25">
+          <mxGeometry x="0.88" relative="1" as="geometry">
+            <mxPoint y="-11" as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="e25r" value="crew" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];fontSize=11;labelBackgroundColor=none;" vertex="1" connectable="0" parent="e25">
+          <mxGeometry x="0.0" relative="1" as="geometry">
+            <mxPoint y="-11" as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="e26" value="" style="html=1;rounded=0;edgeStyle=orthogonalEdgeStyle;jumpStyle=arc;fontSize=11;startArrow=diamondThin;startFill=0;startSize=16;endArrow=none;" edge="1" parent="1" source="c_Colony" target="c_Robot">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e26s" value="1" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];fontSize=11;labelBackgroundColor=none;" vertex="1" connectable="0" parent="e26">
+          <mxGeometry x="-0.88" relative="1" as="geometry">
+            <mxPoint y="-11" as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="e26t" value="0..*" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];fontSize=11;labelBackgroundColor=none;" vertex="1" connectable="0" parent="e26">
+          <mxGeometry x="0.88" relative="1" as="geometry">
+            <mxPoint y="-11" as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="e26r" value="robots" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];fontSize=11;labelBackgroundColor=none;" vertex="1" connectable="0" parent="e26">
+          <mxGeometry x="0.0" relative="1" as="geometry">
+            <mxPoint y="-11" as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="e27" value="" style="html=1;rounded=0;edgeStyle=orthogonalEdgeStyle;jumpStyle=arc;fontSize=11;startArrow=diamondThin;startFill=0;startSize=16;endArrow=none;" edge="1" parent="1" source="c_Colony" target="c_Facility">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e27s" value="1" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];fontSize=11;labelBackgroundColor=none;" vertex="1" connectable="0" parent="e27">
+          <mxGeometry x="-0.88" relative="1" as="geometry">
+            <mxPoint y="-11" as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="e27t" value="0..*" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];fontSize=11;labelBackgroundColor=none;" vertex="1" connectable="0" parent="e27">
+          <mxGeometry x="0.88" relative="1" as="geometry">
+            <mxPoint y="-11" as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="e27r" value="facilities" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];fontSize=11;labelBackgroundColor=none;" vertex="1" connectable="0" parent="e27">
+          <mxGeometry x="0.0" relative="1" as="geometry">
+            <mxPoint y="-11" as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="e28" value="" style="html=1;rounded=0;edgeStyle=orthogonalEdgeStyle;jumpStyle=arc;fontSize=11;startArrow=diamondThin;startFill=0;startSize=16;endArrow=none;" edge="1" parent="1" source="c_Facility" target="c_Equipment">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e28s" value="1" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];fontSize=11;labelBackgroundColor=none;" vertex="1" connectable="0" parent="e28">
+          <mxGeometry x="-0.88" relative="1" as="geometry">
+            <mxPoint y="-11" as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="e28t" value="0..*" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];fontSize=11;labelBackgroundColor=none;" vertex="1" connectable="0" parent="e28">
+          <mxGeometry x="0.88" relative="1" as="geometry">
+            <mxPoint y="-11" as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="e28r" value="equipments" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];fontSize=11;labelBackgroundColor=none;" vertex="1" connectable="0" parent="e28">
+          <mxGeometry x="0.0" relative="1" as="geometry">
+            <mxPoint y="-11" as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="e29" value="" style="html=1;rounded=0;edgeStyle=orthogonalEdgeStyle;jumpStyle=arc;fontSize=11;startArrow=diamondThin;startFill=0;startSize=16;endArrow=none;" edge="1" parent="1" source="c_ExplorationRover" target="c_Equipment">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e29s" value="1" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];fontSize=11;labelBackgroundColor=none;" vertex="1" connectable="0" parent="e29">
+          <mxGeometry x="-0.88" relative="1" as="geometry">
+            <mxPoint y="-11" as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="e29t" value="0..5" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];fontSize=11;labelBackgroundColor=none;" vertex="1" connectable="0" parent="e29">
+          <mxGeometry x="0.88" relative="1" as="geometry">
+            <mxPoint y="-11" as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="e29r" value="cargo" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];fontSize=11;labelBackgroundColor=none;" vertex="1" connectable="0" parent="e29">
+          <mxGeometry x="0.0" relative="1" as="geometry">
+            <mxPoint y="-11" as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="e30" value="" style="html=1;rounded=0;edgeStyle=orthogonalEdgeStyle;jumpStyle=arc;fontSize=11;endArrow=open;endSize=10;endFill=0;" edge="1" parent="1" source="c_Simulation" target="c_Colony">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e30s" value="1" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];fontSize=11;labelBackgroundColor=none;" vertex="1" connectable="0" parent="e30">
+          <mxGeometry x="-0.88" relative="1" as="geometry">
+            <mxPoint y="-11" as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="e30t" value="1" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];fontSize=11;labelBackgroundColor=none;" vertex="1" connectable="0" parent="e30">
+          <mxGeometry x="0.88" relative="1" as="geometry">
+            <mxPoint y="-11" as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="e30r" value="colony" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];fontSize=11;labelBackgroundColor=none;" vertex="1" connectable="0" parent="e30">
+          <mxGeometry x="0.0" relative="1" as="geometry">
+            <mxPoint y="-11" as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="e31" value="" style="html=1;rounded=0;edgeStyle=orthogonalEdgeStyle;jumpStyle=arc;fontSize=11;endArrow=open;endSize=10;endFill=0;" edge="1" parent="1" source="c_Simulation" target="c_Environment">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e31s" value="1" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];fontSize=11;labelBackgroundColor=none;" vertex="1" connectable="0" parent="e31">
+          <mxGeometry x="-0.88" relative="1" as="geometry">
+            <mxPoint y="-11" as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="e31t" value="1" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];fontSize=11;labelBackgroundColor=none;" vertex="1" connectable="0" parent="e31">
+          <mxGeometry x="0.88" relative="1" as="geometry">
+            <mxPoint y="-11" as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="e31r" value="env" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];fontSize=11;labelBackgroundColor=none;" vertex="1" connectable="0" parent="e31">
+          <mxGeometry x="0.0" relative="1" as="geometry">
+            <mxPoint y="-11" as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="e32" value="" style="html=1;rounded=0;edgeStyle=orthogonalEdgeStyle;jumpStyle=arc;fontSize=11;endArrow=open;endSize=10;endFill=0;" edge="1" parent="1" source="c_Colony" target="c_Environment">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e32s" value="*" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];fontSize=11;labelBackgroundColor=none;" vertex="1" connectable="0" parent="e32">
+          <mxGeometry x="-0.88" relative="1" as="geometry">
+            <mxPoint y="-11" as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="e32t" value="1" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];fontSize=11;labelBackgroundColor=none;" vertex="1" connectable="0" parent="e32">
+          <mxGeometry x="0.88" relative="1" as="geometry">
+            <mxPoint y="-11" as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="e32r" value="e" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];fontSize=11;labelBackgroundColor=none;" vertex="1" connectable="0" parent="e32">
+          <mxGeometry x="0.0" relative="1" as="geometry">
+            <mxPoint y="-11" as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="e33" value="" style="html=1;rounded=0;edgeStyle=orthogonalEdgeStyle;jumpStyle=arc;fontSize=11;endArrow=open;endSize=10;endFill=0;" edge="1" parent="1" source="c_Colony" target="c_Mission">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e33s" value="1" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];fontSize=11;labelBackgroundColor=none;" vertex="1" connectable="0" parent="e33">
+          <mxGeometry x="-0.88" relative="1" as="geometry">
+            <mxPoint y="-11" as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="e33t" value="0..1" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];fontSize=11;labelBackgroundColor=none;" vertex="1" connectable="0" parent="e33">
+          <mxGeometry x="0.88" relative="1" as="geometry">
+            <mxPoint y="-11" as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="e33r" value="activeMission / missionHistory 0..*" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];fontSize=11;labelBackgroundColor=none;" vertex="1" connectable="0" parent="e33">
+          <mxGeometry x="0.0" relative="1" as="geometry">
+            <mxPoint y="-11" as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="e34" value="" style="html=1;rounded=0;edgeStyle=orthogonalEdgeStyle;jumpStyle=arc;fontSize=11;endArrow=open;endSize=10;endFill=0;" edge="1" parent="1" source="c_Colony" target="c_Emergency">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e34s" value="1" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];fontSize=11;labelBackgroundColor=none;" vertex="1" connectable="0" parent="e34">
+          <mxGeometry x="-0.88" relative="1" as="geometry">
+            <mxPoint y="-11" as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="e34t" value="0..*" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];fontSize=11;labelBackgroundColor=none;" vertex="1" connectable="0" parent="e34">
+          <mxGeometry x="0.88" relative="1" as="geometry">
+            <mxPoint y="-11" as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="e34r" value="emergencyLog" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];fontSize=11;labelBackgroundColor=none;" vertex="1" connectable="0" parent="e34">
+          <mxGeometry x="0.0" relative="1" as="geometry">
+            <mxPoint y="-11" as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="e35" value="" style="html=1;rounded=0;edgeStyle=orthogonalEdgeStyle;jumpStyle=arc;fontSize=11;endArrow=open;endSize=10;endFill=0;" edge="1" parent="1" source="c_Mission" target="c_Agent">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e35s" value="*" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];fontSize=11;labelBackgroundColor=none;" vertex="1" connectable="0" parent="e35">
+          <mxGeometry x="-0.88" relative="1" as="geometry">
+            <mxPoint y="-11" as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="e35t" value="0..*" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];fontSize=11;labelBackgroundColor=none;" vertex="1" connectable="0" parent="e35">
+          <mxGeometry x="0.88" relative="1" as="geometry">
+            <mxPoint y="-11" as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="e35r" value="assignedAgents" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];fontSize=11;labelBackgroundColor=none;" vertex="1" connectable="0" parent="e35">
+          <mxGeometry x="0.0" relative="1" as="geometry">
+            <mxPoint y="-11" as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="e36" value="" style="html=1;rounded=0;edgeStyle=orthogonalEdgeStyle;jumpStyle=arc;fontSize=11;endArrow=open;endSize=10;endFill=0;" edge="1" parent="1" source="c_Mission" target="c_Facility">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e36s" value="*" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];fontSize=11;labelBackgroundColor=none;" vertex="1" connectable="0" parent="e36">
+          <mxGeometry x="-0.88" relative="1" as="geometry">
+            <mxPoint y="-11" as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="e36t" value="0..*" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];fontSize=11;labelBackgroundColor=none;" vertex="1" connectable="0" parent="e36">
+          <mxGeometry x="0.88" relative="1" as="geometry">
+            <mxPoint y="-11" as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="e36r" value="targetFacilities" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];fontSize=11;labelBackgroundColor=none;" vertex="1" connectable="0" parent="e36">
+          <mxGeometry x="0.0" relative="1" as="geometry">
+            <mxPoint y="-11" as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="e37" value="" style="html=1;rounded=0;edgeStyle=orthogonalEdgeStyle;jumpStyle=arc;fontSize=11;endArrow=open;endSize=10;endFill=0;" edge="1" parent="1" source="c_ExplorationMission" target="c_Equipment">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e37s" value="*" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];fontSize=11;labelBackgroundColor=none;" vertex="1" connectable="0" parent="e37">
+          <mxGeometry x="-0.88" relative="1" as="geometry">
+            <mxPoint y="-11" as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="e37t" value="0..*" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];fontSize=11;labelBackgroundColor=none;" vertex="1" connectable="0" parent="e37">
+          <mxGeometry x="0.88" relative="1" as="geometry">
+            <mxPoint y="-11" as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="e37r" value="requiredEquipment" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];fontSize=11;labelBackgroundColor=none;" vertex="1" connectable="0" parent="e37">
+          <mxGeometry x="0.0" relative="1" as="geometry">
+            <mxPoint y="-11" as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="e38" value="" style="html=1;rounded=0;edgeStyle=orthogonalEdgeStyle;jumpStyle=arc;fontSize=11;endArrow=open;endSize=10;endFill=0;" edge="1" parent="1" source="c_ResearchMission" target="c_Laboratory">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e38s" value="*" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];fontSize=11;labelBackgroundColor=none;" vertex="1" connectable="0" parent="e38">
+          <mxGeometry x="-0.88" relative="1" as="geometry">
+            <mxPoint y="-11" as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="e38t" value="1" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];fontSize=11;labelBackgroundColor=none;" vertex="1" connectable="0" parent="e38">
+          <mxGeometry x="0.88" relative="1" as="geometry">
+            <mxPoint y="-11" as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="e38r" value="lab" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];fontSize=11;labelBackgroundColor=none;" vertex="1" connectable="0" parent="e38">
+          <mxGeometry x="0.0" relative="1" as="geometry">
+            <mxPoint y="-11" as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="e39" value="" style="html=1;rounded=0;edgeStyle=orthogonalEdgeStyle;jumpStyle=arc;fontSize=11;endArrow=open;endSize=10;endFill=0;" edge="1" parent="1" source="c_RepairMission" target="c_Facility">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e39s" value="*" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];fontSize=11;labelBackgroundColor=none;" vertex="1" connectable="0" parent="e39">
+          <mxGeometry x="-0.88" relative="1" as="geometry">
+            <mxPoint y="-11" as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="e39t" value="1" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];fontSize=11;labelBackgroundColor=none;" vertex="1" connectable="0" parent="e39">
+          <mxGeometry x="0.88" relative="1" as="geometry">
+            <mxPoint y="-11" as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="e39r" value="targetFacility" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];fontSize=11;labelBackgroundColor=none;" vertex="1" connectable="0" parent="e39">
+          <mxGeometry x="0.0" relative="1" as="geometry">
+            <mxPoint y="-11" as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="e40" value="" style="html=1;rounded=0;edgeStyle=orthogonalEdgeStyle;jumpStyle=arc;fontSize=11;endArrow=open;endSize=10;endFill=0;" edge="1" parent="1" source="c_RepairMission" target="c_Equipment">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e40s" value="*" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];fontSize=11;labelBackgroundColor=none;" vertex="1" connectable="0" parent="e40">
+          <mxGeometry x="-0.88" relative="1" as="geometry">
+            <mxPoint y="-11" as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="e40t" value="1" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];fontSize=11;labelBackgroundColor=none;" vertex="1" connectable="0" parent="e40">
+          <mxGeometry x="0.88" relative="1" as="geometry">
+            <mxPoint y="-11" as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="e40r" value="targetEquipment" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];fontSize=11;labelBackgroundColor=none;" vertex="1" connectable="0" parent="e40">
+          <mxGeometry x="0.0" relative="1" as="geometry">
+            <mxPoint y="-11" as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="e41" value="" style="html=1;rounded=0;edgeStyle=orthogonalEdgeStyle;jumpStyle=arc;fontSize=11;endArrow=open;endSize=10;endFill=0;" edge="1" parent="1" source="c_Emergency" target="c_Agent">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e41s" value="*" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];fontSize=11;labelBackgroundColor=none;" vertex="1" connectable="0" parent="e41">
+          <mxGeometry x="-0.88" relative="1" as="geometry">
+            <mxPoint y="-11" as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="e41t" value="0..*" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];fontSize=11;labelBackgroundColor=none;" vertex="1" connectable="0" parent="e41">
+          <mxGeometry x="0.88" relative="1" as="geometry">
+            <mxPoint y="-11" as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="e41r" value="responders" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];fontSize=11;labelBackgroundColor=none;" vertex="1" connectable="0" parent="e41">
+          <mxGeometry x="0.0" relative="1" as="geometry">
+            <mxPoint y="-11" as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="e42" value="" style="html=1;rounded=0;edgeStyle=orthogonalEdgeStyle;jumpStyle=arc;fontSize=11;endArrow=open;endSize=10;endFill=0;" edge="1" parent="1" source="c_OxygenLeak" target="c_Habitat">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e42s" value="*" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];fontSize=11;labelBackgroundColor=none;" vertex="1" connectable="0" parent="e42">
+          <mxGeometry x="-0.88" relative="1" as="geometry">
+            <mxPoint y="-11" as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="e42t" value="1" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];fontSize=11;labelBackgroundColor=none;" vertex="1" connectable="0" parent="e42">
+          <mxGeometry x="0.88" relative="1" as="geometry">
+            <mxPoint y="-11" as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="e42r" value="affectedHabitat" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];fontSize=11;labelBackgroundColor=none;" vertex="1" connectable="0" parent="e42">
+          <mxGeometry x="0.0" relative="1" as="geometry">
+            <mxPoint y="-11" as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="e43" value="" style="html=1;rounded=0;edgeStyle=orthogonalEdgeStyle;jumpStyle=arc;fontSize=11;endArrow=open;endSize=10;endFill=0;" edge="1" parent="1" source="c_Fire" target="c_Laboratory">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e43s" value="*" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];fontSize=11;labelBackgroundColor=none;" vertex="1" connectable="0" parent="e43">
+          <mxGeometry x="-0.88" relative="1" as="geometry">
+            <mxPoint y="-11" as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="e43t" value="1" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];fontSize=11;labelBackgroundColor=none;" vertex="1" connectable="0" parent="e43">
+          <mxGeometry x="0.88" relative="1" as="geometry">
+            <mxPoint y="-11" as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="e43r" value="affectedLab" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];fontSize=11;labelBackgroundColor=none;" vertex="1" connectable="0" parent="e43">
+          <mxGeometry x="0.0" relative="1" as="geometry">
+            <mxPoint y="-11" as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="e44" value="" style="html=1;rounded=0;edgeStyle=orthogonalEdgeStyle;jumpStyle=arc;fontSize=11;endArrow=open;endSize=10;endFill=0;" edge="1" parent="1" source="c_RoverBreakdown" target="c_ExplorationRover">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e44s" value="*" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];fontSize=11;labelBackgroundColor=none;" vertex="1" connectable="0" parent="e44">
+          <mxGeometry x="-0.88" relative="1" as="geometry">
+            <mxPoint y="-11" as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="e44t" value="1" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];fontSize=11;labelBackgroundColor=none;" vertex="1" connectable="0" parent="e44">
+          <mxGeometry x="0.88" relative="1" as="geometry">
+            <mxPoint y="-11" as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="e44r" value="explorationRover" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];fontSize=11;labelBackgroundColor=none;" vertex="1" connectable="0" parent="e44">
+          <mxGeometry x="0.0" relative="1" as="geometry">
+            <mxPoint y="-11" as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="e45" value="" style="html=1;rounded=0;edgeStyle=orthogonalEdgeStyle;jumpStyle=arc;fontSize=11;endArrow=open;endSize=10;endFill=0;" edge="1" parent="1" source="c_RoverBreakdown" target="c_Facility">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e45s" value="*" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];fontSize=11;labelBackgroundColor=none;" vertex="1" connectable="0" parent="e45">
+          <mxGeometry x="-0.88" relative="1" as="geometry">
+            <mxPoint y="-11" as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="e45t" value="1" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];fontSize=11;labelBackgroundColor=none;" vertex="1" connectable="0" parent="e45">
+          <mxGeometry x="0.88" relative="1" as="geometry">
+            <mxPoint y="-11" as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="e45r" value="breakdownLocation" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];fontSize=11;labelBackgroundColor=none;" vertex="1" connectable="0" parent="e45">
+          <mxGeometry x="0.0" relative="1" as="geometry">
+            <mxPoint y="-11" as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="e46" value="" style="html=1;rounded=0;edgeStyle=orthogonalEdgeStyle;jumpStyle=arc;fontSize=11;endArrow=open;endSize=10;endFill=0;" edge="1" parent="1" source="c_MedicalEmergency" target="c_CrewMember">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e46s" value="*" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];fontSize=11;labelBackgroundColor=none;" vertex="1" connectable="0" parent="e46">
+          <mxGeometry x="-0.88" relative="1" as="geometry">
+            <mxPoint y="-11" as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="e46t" value="1" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];fontSize=11;labelBackgroundColor=none;" vertex="1" connectable="0" parent="e46">
+          <mxGeometry x="0.88" relative="1" as="geometry">
+            <mxPoint y="-11" as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="e46r" value="patient" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];fontSize=11;labelBackgroundColor=none;" vertex="1" connectable="0" parent="e46">
+          <mxGeometry x="0.0" relative="1" as="geometry">
+            <mxPoint y="-11" as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="e47" value="" style="html=1;rounded=0;edgeStyle=orthogonalEdgeStyle;jumpStyle=arc;fontSize=11;endArrow=open;endSize=10;endFill=0;" edge="1" parent="1" source="c_MedicalEmergency" target="c_Facility">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e47s" value="*" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];fontSize=11;labelBackgroundColor=none;" vertex="1" connectable="0" parent="e47">
+          <mxGeometry x="-0.88" relative="1" as="geometry">
+            <mxPoint y="-11" as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="e47t" value="1" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];fontSize=11;labelBackgroundColor=none;" vertex="1" connectable="0" parent="e47">
+          <mxGeometry x="0.88" relative="1" as="geometry">
+            <mxPoint y="-11" as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="e47r" value="affectedFacility" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];fontSize=11;labelBackgroundColor=none;" vertex="1" connectable="0" parent="e47">
+          <mxGeometry x="0.0" relative="1" as="geometry">
+            <mxPoint y="-11" as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="e48" value="" style="html=1;rounded=0;edgeStyle=orthogonalEdgeStyle;jumpStyle=arc;fontSize=11;endArrow=open;endSize=10;endFill=0;" edge="1" parent="1" source="c_Facility" target="c_Agent">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e48s" value="1" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];fontSize=11;labelBackgroundColor=none;" vertex="1" connectable="0" parent="e48">
+          <mxGeometry x="-0.88" relative="1" as="geometry">
+            <mxPoint y="-11" as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="e48t" value="0..*" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];fontSize=11;labelBackgroundColor=none;" vertex="1" connectable="0" parent="e48">
+          <mxGeometry x="0.88" relative="1" as="geometry">
+            <mxPoint y="-11" as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="e48r" value="occupants" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];fontSize=11;labelBackgroundColor=none;" vertex="1" connectable="0" parent="e48">
+          <mxGeometry x="0.0" relative="1" as="geometry">
+            <mxPoint y="-11" as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="e49" value="" style="html=1;rounded=0;edgeStyle=orthogonalEdgeStyle;jumpStyle=arc;fontSize=11;endArrow=open;endSize=10;endFill=0;" edge="1" parent="1" source="c_CrewMember" target="c_Location">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e49s" value="*" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];fontSize=11;labelBackgroundColor=none;" vertex="1" connectable="0" parent="e49">
+          <mxGeometry x="-0.88" relative="1" as="geometry">
+            <mxPoint y="-11" as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="e49t" value="1" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];fontSize=11;labelBackgroundColor=none;" vertex="1" connectable="0" parent="e49">
+          <mxGeometry x="0.88" relative="1" as="geometry">
+            <mxPoint y="-11" as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="e49r" value="location" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];fontSize=11;labelBackgroundColor=none;" vertex="1" connectable="0" parent="e49">
+          <mxGeometry x="0.0" relative="1" as="geometry">
+            <mxPoint y="-11" as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="e50" value="" style="html=1;rounded=0;edgeStyle=orthogonalEdgeStyle;jumpStyle=arc;fontSize=11;endArrow=open;endSize=10;endFill=0;" edge="1" parent="1" source="c_Robot" target="c_Location">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e50s" value="*" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];fontSize=11;labelBackgroundColor=none;" vertex="1" connectable="0" parent="e50">
+          <mxGeometry x="-0.88" relative="1" as="geometry">
+            <mxPoint y="-11" as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="e50t" value="1" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];fontSize=11;labelBackgroundColor=none;" vertex="1" connectable="0" parent="e50">
+          <mxGeometry x="0.88" relative="1" as="geometry">
+            <mxPoint y="-11" as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="e50r" value="location" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];fontSize=11;labelBackgroundColor=none;" vertex="1" connectable="0" parent="e50">
+          <mxGeometry x="0.0" relative="1" as="geometry">
+            <mxPoint y="-11" as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="e51" value="«use»" style="html=1;rounded=0;edgeStyle=orthogonalEdgeStyle;jumpStyle=arc;fontSize=11;dashed=1;endArrow=open;endSize=10;endFill=0;" edge="1" parent="1" source="c_Agent" target="c_Mission">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e52" value="«use»" style="html=1;rounded=0;edgeStyle=orthogonalEdgeStyle;jumpStyle=arc;fontSize=11;dashed=1;endArrow=open;endSize=10;endFill=0;" edge="1" parent="1" source="c_Agent" target="c_Emergency">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e53" value="«use»" style="html=1;rounded=0;edgeStyle=orthogonalEdgeStyle;jumpStyle=arc;fontSize=11;dashed=1;endArrow=open;endSize=10;endFill=0;" edge="1" parent="1" source="c_Mission" target="c_Environment">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e54" value="" style="html=1;rounded=0;edgeStyle=orthogonalEdgeStyle;jumpStyle=arc;fontSize=11;dashed=1;endArrow=open;endSize=10;endFill=0;" edge="1" parent="1" source="c_CrewMember" target="c_Validator">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e55" value="" style="html=1;rounded=0;edgeStyle=orthogonalEdgeStyle;jumpStyle=arc;fontSize=11;dashed=1;endArrow=open;endSize=10;endFill=0;" edge="1" parent="1" source="c_Robot" target="c_Validator">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e56" value="" style="html=1;rounded=0;edgeStyle=orthogonalEdgeStyle;jumpStyle=arc;fontSize=11;endArrow=open;endSize=10;endFill=0;exitX=0.5;exitY=1;entryX=0.5;entryY=1;" edge="1" parent="1" source="c_Fire" target="c_MedicalEmergency">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="2245" y="2170" />
+              <mxPoint x="2834" y="2170" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
